@@ -1,9 +1,9 @@
 type: object
 properties:
-  id:
-    type: integer
-    format: int64
+  job_id:
+    $ref: ../Hash.yaml
   status:
     type: string
-  error:
+    enum: ["queued", "running", "completed", "error"]
+  error_message:
     type: string

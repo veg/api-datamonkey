@@ -23,7 +23,7 @@ externalDocs:
 tags:
   - name: HyPhy Methods
     description: Examples starting jobs and fetching results for specific HyPhy methods
-  - name: File Upload
+  - name: File Upload and QC
     description: Examples uploading files to Datamonkey
   - name: Codon Aware Alignments
     description: Examples building codon-aware alignments from uploaded data. Somewhere over the rainbow..

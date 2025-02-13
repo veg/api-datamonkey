@@ -1,6 +1,6 @@
 type: object
 properties:
   job_id:
-    type: string
+    $ref: ../Hash.yaml
   result:
     type: string

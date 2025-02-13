@@ -1,0 +1,18 @@
+# TODO: the values should probably be like 'universal', 'vertebrate_mtdna', etc.
+type: object
+description: |
+  Available Genetic Codes
+default: "Universal"
+enum: 
+  - { value: "Universal", display_name: "Universal code" }
+  - { value: "Vertebrate mtDNA", display_name: "Vertebrate mitochondrial DNA code" }
+  - { value: "Yeast mtDNA", display_name: "Yeast mitochondrial DNA code" }
+  - { value: "Mold/Protozoan mtDNA", display_name: "Mold, Protozoan and Coelenterate mt; Mycloplasma/Spiroplasma" }
+  - { value: "Invertebrate mtDNA", display_name: "Invertebrate mitochondrial DNA code" }
+  - { value: "Ciliate Nuclear", display_name: "Ciliate, Dasycladacean and Hexamita Nuclear code" }
+  - { value: "Echinoderm mtDNA", display_name: "Echinoderm mitochondrial DNA code" }
+  - { value: "Eupltoid Nuclear", display_name: "Euplotid Nuclear code" }
+  - { value: "Alt. Yeast Nuclear", display_name: "Alternative Yeast Nuclear code" }
+  - { value: "Ascidian mtDNA", display_name: "Ascidian mitochondrial DNA code" }
+  - { value: "Flatworm mtDNA", display_name: "Flatworm mitochondrial DNA code" }
+  - { value: "Blepharisma Nuclear", display_name: "Blepharisma Nuclear code" }

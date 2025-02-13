@@ -1,34 +1,41 @@
 type: object
 properties:
   alignment:
-    $ref: ../Dataset.yaml
+    $ref: ../Hash.yaml
     description: Handle to the alignment
     required: true
   tree:
-    $ref: ../Dataset.yaml
+    $ref: ../Hash.yaml
     description: Handle to the tree file
     required: true
-  bootstrap:
-    type: boolean
-    default: false
   ci:
     type: boolean
+    default: false
+    description: Compute confidence intervals for estimated rates
+  srv:
+    type: boolean
     default: true
+    description: Include synonymous rate variation in the model
   resample:
     type: number
-    default: 1000
+    default: 0
+    description: Number of bootstrap resamples
   multiple_hits:
     type: string
     enum: ["None", "Double", "Double+Triple"]
     default: "None"
+    description: Specify handling of multiple nucleotide substitutions
   site_multihit:
     type: string
     enum: ["Estimate", "Global"]
     default: "Estimate"
-  rate_variation:
-    type: string
-    enum: ["Yes", "No"]
-    default: "No"
+    description: Specify whether to estimate multiple hit rates for each site
   genetic_code:
-    type: number
-    default: 1
+    $ref: ../GeneticCode.yaml
+    default: "Universal"
+  branches:
+    type: array
+    items:
+      type: string
+    default: []
+    description: Branches to include in the analysis. If empty, all branches are included.

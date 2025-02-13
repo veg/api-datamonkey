@@ -1,0 +1,6 @@
+# TODO: dont know what this looks like yet, 
+# pretend for datasets its a hash of a file handle or something
+# maybe there is a little db that tracks datasets by these hashes
+# or for jobs a hash of the post body that the client can keep hold of
+type: string
+pattern: '^[a-zA-Z0-9]+$'
