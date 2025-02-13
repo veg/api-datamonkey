@@ -1,0 +1,18 @@
+parameters:
+  - name: pretty_print
+    in: query
+    description: Pretty print response
+    schema:
+      type: boolean
+get:
+  tags:
+    - HyPhy Methods
+  summary: Get a list of available HyPhy methods
+  operationId: getMethodsList
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Methods.yaml

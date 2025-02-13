@@ -6,6 +6,7 @@ info:
     email: spond@temple.edu
     url: 'http://github.com/veg/api-datamonkey'
   x-logo:
+    # TODO: figure why the local svg didnt work
     url: 'https://raw.githubusercontent.com/veg/datamonkey-js/refs/heads/master/public/assets/img/header-logo.svg'
     altText: Datamonkey.org logo
     #href: 'https://datamonkey.org'
@@ -25,15 +26,26 @@ tags:
   - name: File Upload
     description: Examples uploading files to Datamonkey
   - name: Codon Aware Alignments
-    description: Examples building codon-aware alignments from uploaded data
+    description: Examples building codon-aware alignments from uploaded data. Somewhere over the rainbow..
   - name: Tree building
-    description: Examples building phylogenetic trees from uploaded data
+    description: Examples building phylogenetic trees from uploaded data. Somewhere over the rainbow..
 servers:
   - url: 'http://datamonkey.org/api/v1'
   - url: 'https://datamonkey.org/api/v1'
+parameters:
+  - name: method
+    in: path
+    description: The name of the HyPhy method
+    required: true
+    schema:
+      type: string
 paths:
-  '/methods/{method}':
-    $ref: 'paths/methods@{method}.yaml'
+  /methods:
+    $ref: paths/methods.yaml
+  /methods/fel:
+    $ref: paths/methods/fel/fel-request.yaml
+  /methods/fel/results:
+    $ref: 'paths/methods/fel/fel-response.yaml'
   /datasets:
     $ref: paths/datasets.yaml
   /datasets/qc:

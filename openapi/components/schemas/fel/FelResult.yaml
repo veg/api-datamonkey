@@ -1,0 +1,6 @@
+type: object
+properties:
+  job_id:
+    type: string
+  result:
+    type: string

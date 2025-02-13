@@ -1,0 +1,13 @@
+description: Available HyPhy Methods
+# TODO: this should probably say params for methods, not just be an array of strings
+type: array
+items:
+  type: string
+  enum:
+    - FEL
+    - FUBAR
+    - BUSTED
+    - aBSREL
+    - MEME
+    - GARD
+    - ContrastFEL

@@ -1,0 +1,34 @@
+type: object
+properties:
+  alignment:
+    $ref: ../Dataset.yaml
+    description: Handle to the alignment
+    required: true
+  tree:
+    $ref: ../Dataset.yaml
+    description: Handle to the tree file
+    required: true
+  bootstrap:
+    type: boolean
+    default: false
+  ci:
+    type: boolean
+    default: true
+  resample:
+    type: number
+    default: 1000
+  multiple_hits:
+    type: string
+    enum: ["None", "Double", "Double+Triple"]
+    default: "None"
+  site_multihit:
+    type: string
+    enum: ["Estimate", "Global"]
+    default: "Estimate"
+  rate_variation:
+    type: string
+    enum: ["Yes", "No"]
+    default: "No"
+  genetic_code:
+    type: number
+    default: 1
