@@ -2,7 +2,5 @@ type: array
 items:
   type: object
   properties:
-    order: 
-      type: integer
-    time: 
-      type: integer
+    order: integer
+    time: integer

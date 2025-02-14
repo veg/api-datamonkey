@@ -1,15 +1,11 @@
 type: object
 properties:
-  authors: 
-    type: string
-  citation: 
-    type: string
+  authors: string
+  citation: string
   contact: 
     $ref: ../Email.yaml
-  info: 
-    type: string
-  requirements: 
-    type: string
+  info: string
+  requirements: string
   settings:
     type: object
     # my naive strategy is to have some required properties for settings
@@ -17,22 +13,14 @@ properties:
     # but thatd let us have one AnalysisInfo object rather than one for each method
     # may change my mind later
     properties:
-      ci: 
-        type: number
-      multihit: 
-        type: string
-      pvalue: 
-        type: number
-      resample: 
-        type: number
+      ci: number
+      multihit: string
+      pvalue: number
+      resample: number
       site_filter:
         type: object
         properties:
-          site_filter: 
-            type: string
-          site_save_filter: 
-            type: string
-      srv: 
-        type: number
-  version: 
-    type: string
+          site_filter: string
+          site_save_filter: string
+      srv: number
+  version: string
