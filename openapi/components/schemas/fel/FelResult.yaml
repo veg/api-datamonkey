@@ -3,4 +3,4 @@ properties:
   job_id:
     $ref: ../Hash.yaml
   result:
-    type: string
+    $ref: ../response/BaseResponse.yaml

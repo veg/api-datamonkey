@@ -1,0 +1,10 @@
+type: object
+properties:
+  file_name: string
+  number_of_sequences: integer
+  number_of_sites: integer
+  partition_count: integer
+  trees: 
+    type: object
+    additionalProperties:
+      type: string

@@ -1,0 +1,15 @@
+type: object
+properties:
+  analysis: 
+    $ref: ./AnalysisInfo.yaml
+  input: 
+    $ref: ./InputInfo.yaml
+  tested_branches: 
+    $ref: ./TestedBranchesInfo.yaml
+  timers: 
+    $ref: ./TimersInfo.yaml
+  runtime: 
+    type: string
+    pattern: '^[0-9]+\.[0-9]+\.[0-9]+$'
+  data_partitions: 
+    $ref: ./PartitionsInfo.yaml

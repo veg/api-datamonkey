@@ -1,0 +1,9 @@
+type: object
+additionalProperties:
+  type: object
+  properties:
+    name: string
+    coverage:
+      type: array
+      items:
+        type: integer
