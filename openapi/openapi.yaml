@@ -46,11 +46,11 @@ paths:
     $ref: paths/methods/fel/fel-request.yaml
   /methods/fel/results:
     $ref: 'paths/methods/fel/fel-response.yaml'
-  /datasets:
-    $ref: paths/datasets.yaml
-  /datasets/qc:
-    $ref: paths/datasets/qc.yaml
-  '/align/{aligner}':
-    $ref: paths/align/{aligner}.yaml
-  '/tree/{tree_tool}':
-    $ref: paths/tree/{tree_tool}.yaml
+  #/datasets:
+  #  $ref: paths/datasets.yaml
+  #/datasets/qc:
+  #  $ref: paths/datasets/qc.yaml
+  #'/align/{aligner}':
+  #  $ref: paths/align/{aligner}.yaml
+  #'/tree/{tree_tool}':
+  #  $ref: paths/tree/{tree_tool}.yaml

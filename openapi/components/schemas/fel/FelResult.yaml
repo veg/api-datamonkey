@@ -13,7 +13,7 @@ properties:
               type: object
               properties:
                 AIC-c:
-                  type: number,
+                  type: number
                 Equilibrium frequencies:
                   type: array
                   items:
