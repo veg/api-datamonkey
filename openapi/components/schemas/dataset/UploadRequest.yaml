@@ -1,0 +1,16 @@
+type: object
+properties:
+  files:
+    type: array
+    items:
+      type: object
+      properties:
+        meta:
+          $ref: ./DatasetMeta.yaml
+        file:
+          type: string
+          format: binary
+          description: Dataset File. incompatible with the url field
+        url:
+          type: string
+          description: URL of the file to upload. incompatible with the file field

@@ -1,0 +1,11 @@
+type: object
+properties:
+  error:
+    type: string
+    description: A general description of the error.
+  code:
+    type: string
+    description: A unique error code (if available).
+  details:
+    type: string
+    description: Optional details about the error. 
