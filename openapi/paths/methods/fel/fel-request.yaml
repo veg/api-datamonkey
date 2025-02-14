@@ -22,3 +22,15 @@ post:
         application/json:
           schema:
             $ref: ../../../components/schemas/fel/FelStatus.yaml
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: ../../../components/schemas/InvalidDataError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../../../components/schemas/ServerError.yaml

@@ -1,0 +1,13 @@
+type: object
+properties:
+  errors: 
+    type: array
+    items: 
+      type: object
+      properties:
+        field:
+          type: string
+          description: The field that caused the error
+        message: 
+          type: string
+          description: The error message 

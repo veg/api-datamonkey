@@ -4,7 +4,7 @@ properties:
     $ref: ../Hash.yaml
   result:
     allOf:
-      - $ref: ../response/BaseResponse.yaml
+      - $ref: ../method_response/BaseResponse.yaml
       - type: object
         properties:
           fits:

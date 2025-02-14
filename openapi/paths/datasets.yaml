@@ -1,0 +1,48 @@
+parameters:
+  - name: pretty_print
+    in: query
+    description: Pretty print response
+    schema:
+      type: boolean
+get:
+  tags:
+    - File Upload and QC
+  summary: Get a list of datasets uploaded to Datamonkey
+  operationId: getDatasetsList
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dataset/Datasets.yaml
+post:
+  tags:
+    - File Upload and QC
+  summary: Upload a dataset to Datamonkey
+  operationId: PostDataset
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          $ref: ../components/schemas/dataset/UploadRequest.yaml
+    required: true
+  responses:
+    '201':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/dataset/Datasets.yaml
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/InvalidDataError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ServerError.yaml

@@ -1,16 +1,13 @@
 type: object
-properties:
-  id:
-    $ref: ../Hash.yaml
-  name:
-    type: string
-  description:
-    type: string
-  type:
-    type: string
-  created:
-    type: string
-    format: date-time
-  updated:
-    type: string
-    format: date-time
+allOf:
+  - $ref: ./DatasetMeta.yaml
+  - type: object
+    properties:
+      id:
+        $ref: ../Hash.yaml
+      created:
+        type: string
+        format: date-time
+      updated:
+        type: string
+        format: date-time
