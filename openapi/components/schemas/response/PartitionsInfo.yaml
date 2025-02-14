@@ -2,7 +2,8 @@ type: object
 additionalProperties:
   type: object
   properties:
-    name: string
+    name: 
+      type: string
     coverage:
       type: array
       items:

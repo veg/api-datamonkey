@@ -3,4 +3,68 @@ properties:
   job_id:
     $ref: ../Hash.yaml
   result:
-    $ref: ../response/BaseResponse.yaml
+    allOf:
+      - $ref: ../response/BaseResponse.yaml
+      - type: object
+        properties:
+          fits:
+            type: object
+            additionalProperties:
+              type: object
+              properties:
+                AIC-c:
+                  type: number,
+                Equilibrium frequencies:
+                  type: array
+                  items:
+                    type: array
+                    items:
+                      type: number
+                Log Likelihood:
+                  type: number
+                Rate Distributions:
+                  type: object
+                  additionalProperties:
+                    type: array
+                    items:
+                      type: array
+                      items:
+                        type: number
+                display order:
+                  type: number
+                estimated parameters:
+                  type: number
+          branch attributes:
+            type: object
+            properties:
+              attrbitutes:
+                type: object
+                additionalProperties:
+                  type: object
+                  properties:
+                    attribute type:
+                      type: string
+                    display_order:
+                      type: integer
+            additionalProperties:
+              type: object
+              additionalProperties:
+                type: object
+                properties:
+                  Global MG94xREV:
+                    type: number
+                  Nucleotide GTR:
+                    type: number
+                  original name:
+                    type: string
+          MLE:
+            type: object
+            properties:
+              content:
+                type: object
+                additionalProperties:
+                  type: array
+                  items:
+                    type: array
+                    items:
+                      type: number
