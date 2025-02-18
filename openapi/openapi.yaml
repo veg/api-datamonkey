@@ -27,7 +27,7 @@ tags:
     description: Examples uploading files to Datamonkey
   - name: Codon Aware Alignments
     description: Examples building codon-aware alignments from uploaded data. Somewhere over the rainbow..
-  - name: Tree building
+  - name: Tree Building
     description: Examples building phylogenetic trees from uploaded data. Somewhere over the rainbow..
 servers:
   - url: 'http://datamonkey.org/api/v1'
@@ -40,12 +40,14 @@ parameters:
     schema:
       type: string
 paths:
-  /methods:
-    $ref: paths/methods.yaml
   /methods/fel:
-    $ref: paths/methods/fel/fel-request.yaml
+    $ref: paths/methods/fel/fel-start-job.yaml
   /methods/fel/results:
-    $ref: 'paths/methods/fel/fel-response.yaml'
+    $ref: paths/methods/fel/fel-results.yaml
+  /methods/busted:
+    $ref: paths/methods/busted/busted-start-job.yaml
+  /methods/busted/results:
+    $ref: paths/methods/busted/busted-results.yaml
   /datasets:
     $ref: paths/datasets.yaml
   #/datasets/qc:

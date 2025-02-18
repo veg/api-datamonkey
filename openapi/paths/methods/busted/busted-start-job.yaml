@@ -1,0 +1,36 @@
+parameters:
+  - name: pretty_print
+    in: query
+    description: Pretty print response
+    schema:
+      type: boolean
+post:
+  tags:
+    - HyPhy Methods
+  summary: Start and monitor a BUSTED job
+  operationId: startBUSTEDJob
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../../components/schemas/busted/BustedRequest.yaml
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../../../components/schemas/JobStatus.yaml
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: ../../../components/schemas/InvalidDataError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../../../components/schemas/ServerError.yaml
