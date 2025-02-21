@@ -6,7 +6,7 @@ parameters:
       type: boolean
 post:
   tags:
-    - HyPhy Methods
+    - FEL
   summary: Get a FEL job result
   operationId: getFELJob
   requestBody:

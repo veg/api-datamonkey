@@ -20,10 +20,14 @@ externalDocs:
   description: Use Datamonkey today!
   url: 'https://datamonkey.org'
 tags:
-  - name: HyPhy Methods
-    description: Examples starting jobs and fetching results for specific HyPhy methods
+  - name: FEL
+    description: Examples starting jobs and fetching results for FEL
+  - name: BUSTED
+    description: Examples starting jobs and fetching results for BUSTED
   - name: File Upload and QC
     description: Examples uploading files to Datamonkey
+  - name: Health
+    description: Check health of Datamonkey server
   - name: Codon Aware Alignments
     description: >-
       Examples building codon-aware alignments from uploaded data. Somewhere
@@ -43,7 +47,38 @@ parameters:
     schema:
       type: string
 paths:
-  /methods/fel:
+  /health:
+    parameters:
+      - name: pretty_print
+        in: query
+        description: Pretty print response
+        schema:
+          type: boolean
+    get:
+      tags:
+        - Health
+      summary: Check health of Datamonkey
+      operationId: getHealth
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+        '500':
+          description: Unable to get health. Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+        '503':
+          description: Unable to get health. Service unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+  /methods/fel-start:
     parameters:
       - name: pretty_print
         in: query
@@ -52,7 +87,7 @@ paths:
           type: boolean
     post:
       tags:
-        - HyPhy Methods
+        - FEL
       summary: Start and monitor a FEL job
       operationId: startFELJob
       requestBody:
@@ -80,7 +115,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ServerError'
-  /methods/fel/results:
+  /methods/fel-result:
     parameters:
       - name: pretty_print
         in: query
@@ -89,7 +124,7 @@ paths:
           type: boolean
     post:
       tags:
-        - HyPhy Methods
+        - FEL
       summary: Get a FEL job result
       operationId: getFELJob
       requestBody:
@@ -111,7 +146,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ServerError'
-  /methods/busted:
+  /methods/busted-start:
     parameters:
       - name: pretty_print
         in: query
@@ -120,7 +155,7 @@ paths:
           type: boolean
     post:
       tags:
-        - HyPhy Methods
+        - BUSTED
       summary: Start and monitor a BUSTED job
       operationId: startBUSTEDJob
       requestBody:
@@ -148,7 +183,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ServerError'
-  /methods/busted/results:
+  /methods/busted-result:
     parameters:
       - name: pretty_print
         in: query
@@ -157,7 +192,7 @@ paths:
           type: boolean
     post:
       tags:
-        - HyPhy Methods
+        - BUSTED
       summary: Get a BUSTED job result
       operationId: getBUSTEDJob
       requestBody:
@@ -230,6 +265,25 @@ paths:
                 $ref: '#/components/schemas/ServerError'
 components:
   schemas:
+    Status:
+      type: string
+      enum:
+        - healthy
+        - unhealthy
+        - unknown
+    Health:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        details:
+          type: object
+          optional: true
+          properties:
+            slurm:
+              $ref: '#/components/schemas/Status'
+            datamonkey:
+              $ref: '#/components/schemas/Status'
     Hash:
       type: string
       pattern: '^[a-zA-Z0-9]+$'

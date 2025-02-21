@@ -1,0 +1,30 @@
+parameters:
+  - name: pretty_print
+    in: query
+    description: Pretty print response
+    schema:
+      type: boolean
+get:
+  tags:
+    - Health
+  summary: Check health of Datamonkey
+  operationId: getHealth
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/health/Health.yaml
+    '500':
+      description: Unable to get health. Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/health/Health.yaml
+    '503':
+      description: Unable to get health. Service unavailable
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/health/Health.yaml

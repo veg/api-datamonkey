@@ -21,10 +21,14 @@ externalDocs:
   description: Use Datamonkey today!
   url: 'https://datamonkey.org'
 tags:
-  - name: HyPhy Methods
-    description: Examples starting jobs and fetching results for specific HyPhy methods
+  - name: FEL
+    description: Examples starting jobs and fetching results for FEL
+  - name: BUSTED
+    description: Examples starting jobs and fetching results for BUSTED
   - name: File Upload and QC
     description: Examples uploading files to Datamonkey
+  - name: Health
+    description: Check health of Datamonkey server
   - name: Codon Aware Alignments
     description: Examples building codon-aware alignments from uploaded data. Somewhere over the rainbow..
   - name: Tree Building
@@ -40,13 +44,15 @@ parameters:
     schema:
       type: string
 paths:
-  /methods/fel:
+  /health:
+    $ref: paths/health.yaml
+  /methods/fel-start:
     $ref: paths/methods/fel/fel-start-job.yaml
-  /methods/fel/results:
+  /methods/fel-result:
     $ref: paths/methods/fel/fel-results.yaml
-  /methods/busted:
+  /methods/busted-start:
     $ref: paths/methods/busted/busted-start-job.yaml
-  /methods/busted/results:
+  /methods/busted-result:
     $ref: paths/methods/busted/busted-results.yaml
   /datasets:
     $ref: paths/datasets.yaml

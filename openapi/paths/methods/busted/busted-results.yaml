@@ -6,7 +6,7 @@ parameters:
       type: boolean
 post:
   tags:
-    - HyPhy Methods
+    - BUSTED
   summary: Get a BUSTED job result
   operationId: getBUSTEDJob
   requestBody:

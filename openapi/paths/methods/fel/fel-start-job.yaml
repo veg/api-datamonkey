@@ -6,7 +6,7 @@ parameters:
       type: boolean
 post:
   tags:
-    - HyPhy Methods
+    - FEL
   summary: Start and monitor a FEL job
   operationId: startFELJob
   requestBody:
