@@ -1,0 +1,30 @@
+parameters:
+  - name: pretty_print
+    in: query
+    description: Pretty print response
+    schema:
+      type: boolean
+post:
+  tags:
+    - BUSTED
+  summary: Get a BUSTED job result
+  operationId: getBUSTEDJob
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../../components/schemas/busted/BustedRequest.yaml
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../../../components/schemas/busted/BustedResult.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../../../components/schemas/ServerError.yaml

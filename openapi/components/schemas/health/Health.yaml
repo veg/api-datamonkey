@@ -1,0 +1,12 @@
+type: object
+properties:
+  status:
+    $ref: './Status.yaml'
+  details:
+    type: object
+    optional: true
+    properties:
+      slurm:
+        $ref: './Status.yaml'
+      datamonkey:
+        $ref: './Status.yaml'

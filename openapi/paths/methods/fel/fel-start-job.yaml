@@ -6,7 +6,7 @@ parameters:
       type: boolean
 post:
   tags:
-    - HyPhy Methods
+    - FEL
   summary: Start and monitor a FEL job
   operationId: startFELJob
   requestBody:
@@ -21,7 +21,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: ../../../components/schemas/fel/FelStatus.yaml
+            $ref: ../../../components/schemas/JobStatus.yaml
     '422':
       description: Unprocessable Entity
       content:

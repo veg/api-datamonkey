@@ -1,0 +1,144 @@
+type: object
+properties:
+  job_id:
+    $ref: ../Hash.yaml
+  result:
+    allOf:
+      - $ref: ../method_response/BaseResponse.yaml
+      - type: object
+        properties:
+          background:
+            type: number
+          fits:
+            type: object
+            additionalProperties:
+              type: object
+              properties:
+                AIC-c:
+                  type: number
+                Log Likelihood:
+                  type: number
+                Rate Distributions:
+                  type: object
+                  properties:
+                    Test:
+                      type: object
+                      additionalProperties:
+                        type: object
+                        properties:
+                          omega:
+                            type: number
+                          proportion:
+                            type: number
+                    Synonymous site-to-site rates:
+                      type: object
+                      additionalProperties:
+                        type: object
+                        properties:
+                          proportion:
+                            type: number
+                          rate:
+                            type: number
+                display order:
+                  type: number
+                estimated parameters:
+                  type: number
+          branch attributes:
+            type: object
+            properties:
+              attrbitutes:
+                type: object
+                additionalProperties:
+                  type: object
+                  properties:
+                    attribute type:
+                      type: string
+                    display_order:
+                      type: integer
+            additionalProperties:
+              type: object
+              additionalProperties:
+                type: object
+                properties:
+                  MG94xREV with separate rates for branch sets:
+                    type: number
+                  Nucleotide GTR:
+                    type: number
+                  Posterior prob omega class:
+                    type: array
+                    items:
+                      type: array
+                      items:
+                        type: number
+                  Posterior prob omega class by site:
+                    type: array
+                    items:
+                      type: array
+                      items:
+                        type: number
+                  constrained:
+                    type: number
+                  original name:
+                    type: string
+                  unconstrained:
+                    type: number
+          test_results:
+            type: object
+            properties:
+              LRT:
+                type: number
+              p-value:
+                type: number
+          substitutions:
+            type: object
+            additionalProperties:
+              type: object
+              additionalProperties:
+                type: object
+                properties:
+                  root: 
+                    type: string
+                additionalProperties:
+                  type: string
+          Synonymous site-posteriors:
+            type: array
+            items:
+              type: array
+              items:
+                type: number
+          Site Log Likelihood:
+            type: object
+            properties:
+              constrained:
+                type: array
+                items:
+                  type: array
+                  items:
+                    type: number
+              unconstrained:
+                type: array
+                items:
+                  type: array
+                  items:
+                    type: number
+              optimized null:
+                type: array
+                items:
+                  type: array
+                  items:
+                    type: number
+          Evidence Ratios:
+            type: object
+            properties:
+              constrained:
+                type: array
+                items:
+                  type: array
+                  items:
+                    type: number
+              optimized null:
+                type: array
+                items:
+                  type: array
+                  items:
+                    type: number

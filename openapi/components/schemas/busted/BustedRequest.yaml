@@ -1,0 +1,55 @@
+type: object
+properties:
+  alignment:
+    $ref: ../Hash.yaml
+    description: Handle to the alignment
+    required: true
+  tree:
+    $ref: ../Hash.yaml
+    description: Handle to the tree file
+    required: true
+  srv:
+    type: string
+    enum: ["Yes", "No", "branch-site"]
+    default: "Yes"
+    description: Include synonymous rate variation in the model
+  multiple_hits:
+    type: string
+    enum: ["None", "Double", "Double+Triple"]
+    default: "None"
+    description: Specify handling of multiple nucleotide substitutions
+  genetic_code:
+    $ref: ../GeneticCode.yaml
+    default: "Universal"
+  branches:
+    type: array
+    items:
+      type: string
+    default: []
+    description: Branches to include in the analysis. If empty, all branches are included.
+  rates:
+    type: integer
+    minimum: 1
+    maximum: 10
+    default: 3
+    description: The number omega rate classes to include in the model
+  syn_rates:
+    type: integer
+    minimum: 1
+    maximum: 10
+    default: 3
+    description: The number synonymous rate classes to include in the model
+  grid_size:
+    type: integer
+    minimum: 1
+    default: 250
+    description: The number of points in the initial distributional guess for likelihood fitting
+  starting_points:
+    type: integer
+    minimum: 1
+    default: 1
+    description: The number of initial random guesses to seed rate values optimization
+  error_sink:
+    type: boolean
+    default: false
+    description: An advanced experimental setting; include a rate class to capture misalignment artifacts
