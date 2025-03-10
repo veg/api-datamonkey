@@ -1,0 +1,34 @@
+type: object
+properties:
+  alignment:
+    $ref: ../Hash.yaml
+    description: Handle to the alignment
+    required: true
+  tree:
+    $ref: ../Hash.yaml
+    description: Handle to the tree file
+    required: true
+  srv:
+    type: boolean
+    default: true
+    description: Include synonymous rate variation in the model
+  multiple_hits:
+    type: string
+    enum: ["None", "Double", "Double+Triple"]
+    default: "None"
+    description: Specify handling of multiple nucleotide substitutions
+  genetic_code:
+    $ref: ../GeneticCode.yaml
+    default: "Universal"
+  branches:
+    type: array
+    items:
+      type: string
+    default: []
+    description: Branches to include in the analysis. If empty, all branches are included.
+  blb:
+    type: number
+    minimum: 0
+    maximum: 1
+    default: 1.0
+    description: Bag of little bootstrap alignment resampling rate

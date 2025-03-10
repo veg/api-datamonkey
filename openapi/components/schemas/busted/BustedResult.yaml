@@ -46,43 +46,45 @@ properties:
           branch attributes:
             type: object
             properties:
-              attrbitutes:
+              # Numeric keys containing branch data (e.g., "0")
+              additionalProperties:
+                type: object
+                additionalProperties:
+                  type: object
+                  properties:
+                    MG94xREV with separate rates for branch sets:
+                      type: number
+                    Nucleotide GTR:
+                      type: number
+                    Posterior prob omega class:
+                      type: array
+                      items:
+                        type: array
+                        items:
+                          type: number
+                    Posterior prob omega class by site:
+                      type: array
+                      items:
+                        type: array
+                        items:
+                          type: number
+                    constrained:
+                      type: number
+                    original name:
+                      type: string
+                    unconstrained:
+                      type: number
+              # Attributes metadata
+              attributes:
                 type: object
                 additionalProperties:
                   type: object
                   properties:
                     attribute type:
                       type: string
-                    display_order:
+                    display order:
                       type: integer
-            additionalProperties:
-              type: object
-              additionalProperties:
-                type: object
-                properties:
-                  MG94xREV with separate rates for branch sets:
-                    type: number
-                  Nucleotide GTR:
-                    type: number
-                  Posterior prob omega class:
-                    type: array
-                    items:
-                      type: array
-                      items:
-                        type: number
-                  Posterior prob omega class by site:
-                    type: array
-                    items:
-                      type: array
-                      items:
-                        type: number
-                  constrained:
-                    type: number
-                  original name:
-                    type: string
-                  unconstrained:
-                    type: number
-          test_results:
+          test results:
             type: object
             properties:
               LRT:

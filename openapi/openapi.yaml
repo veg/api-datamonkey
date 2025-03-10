@@ -25,6 +25,8 @@ tags:
     description: Examples starting jobs and fetching results for FEL
   - name: BUSTED
     description: Examples starting jobs and fetching results for BUSTED
+  - name: ABSREL
+    description: Examples starting jobs and fetching results for ABSREL
   - name: File Upload and QC
     description: Examples uploading files to Datamonkey
   - name: Health
@@ -54,6 +56,10 @@ paths:
     $ref: paths/methods/busted/busted-start-job.yaml
   /methods/busted-result:
     $ref: paths/methods/busted/busted-results.yaml
+  /methods/absrel-start:
+    $ref: paths/methods/absrel/absrel-start-job.yaml
+  /methods/absrel-result:
+    $ref: paths/methods/absrel/absrel-results.yaml
   /datasets:
     $ref: paths/datasets.yaml
   #/datasets/qc:
