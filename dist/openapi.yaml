@@ -24,6 +24,8 @@ tags:
     description: Examples starting jobs and fetching results for FEL
   - name: BUSTED
     description: Examples starting jobs and fetching results for BUSTED
+  - name: ABSREL
+    description: Examples starting jobs and fetching results for ABSREL
   - name: File Upload and QC
     description: Examples uploading files to Datamonkey
   - name: Health
@@ -208,6 +210,74 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BustedResult'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerError'
+  /methods/absrel-start:
+    parameters:
+      - name: pretty_print
+        in: query
+        description: Pretty print response
+        schema:
+          type: boolean
+    post:
+      tags:
+        - ABSREL
+      summary: Start and monitor an ABSREL job
+      operationId: startABSRELJob
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AbsrelRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatus'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidDataError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerError'
+  /methods/absrel-result:
+    parameters:
+      - name: pretty_print
+        in: query
+        description: Pretty print response
+        schema:
+          type: boolean
+    post:
+      tags:
+        - ABSREL
+      summary: Get an ABSREL job result
+      operationId: getABSRELJob
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AbsrelRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AbsrelResult'
         '500':
           description: Internal Server Error
           content:
@@ -528,29 +598,35 @@ components:
                 branch attributes:
                   type: object
                   properties:
-                    attrbitutes:
+                    additionalProperties:
+                      type: object
+                      additionalProperties:
+                        type: object
+                        properties:
+                          Global MG94xREV:
+                            type: number
+                          Nucleotide GTR:
+                            type: number
+                          original name:
+                            type: string
+                    attributes:
                       type: object
                       additionalProperties:
                         type: object
                         properties:
                           attribute type:
                             type: string
-                          display_order:
+                          display order:
                             type: integer
-                  additionalProperties:
-                    type: object
-                    additionalProperties:
-                      type: object
-                      properties:
-                        Global MG94xREV:
-                          type: number
-                        Nucleotide GTR:
-                          type: number
-                        original name:
-                          type: string
                 MLE:
                   type: object
                   properties:
+                    headers:
+                      type: array
+                      items:
+                        type: array
+                        items:
+                          type: string
                     content:
                       type: object
                       additionalProperties:
@@ -678,43 +754,43 @@ components:
                 branch attributes:
                   type: object
                   properties:
-                    attrbitutes:
+                    additionalProperties:
+                      type: object
+                      additionalProperties:
+                        type: object
+                        properties:
+                          MG94xREV with separate rates for branch sets:
+                            type: number
+                          Nucleotide GTR:
+                            type: number
+                          Posterior prob omega class:
+                            type: array
+                            items:
+                              type: array
+                              items:
+                                type: number
+                          Posterior prob omega class by site:
+                            type: array
+                            items:
+                              type: array
+                              items:
+                                type: number
+                          constrained:
+                            type: number
+                          original name:
+                            type: string
+                          unconstrained:
+                            type: number
+                    attributes:
                       type: object
                       additionalProperties:
                         type: object
                         properties:
                           attribute type:
                             type: string
-                          display_order:
+                          display order:
                             type: integer
-                  additionalProperties:
-                    type: object
-                    additionalProperties:
-                      type: object
-                      properties:
-                        MG94xREV with separate rates for branch sets:
-                          type: number
-                        Nucleotide GTR:
-                          type: number
-                        Posterior prob omega class:
-                          type: array
-                          items:
-                            type: array
-                            items:
-                              type: number
-                        Posterior prob omega class by site:
-                          type: array
-                          items:
-                            type: array
-                            items:
-                              type: number
-                        constrained:
-                          type: number
-                        original name:
-                          type: string
-                        unconstrained:
-                          type: number
-                test_results:
+                test results:
                   type: object
                   properties:
                     LRT:
@@ -774,6 +850,166 @@ components:
                         type: array
                         items:
                           type: number
+    AbsrelRequest:
+      type: object
+      properties:
+        alignment:
+          $ref: '#/components/schemas/Hash'
+          description: Handle to the alignment
+          required: true
+        tree:
+          $ref: '#/components/schemas/Hash'
+          description: Handle to the tree file
+          required: true
+        srv:
+          type: boolean
+          default: true
+          description: Include synonymous rate variation in the model
+        multiple_hits:
+          type: string
+          enum:
+            - None
+            - Double
+            - Double+Triple
+          default: None
+          description: Specify handling of multiple nucleotide substitutions
+        genetic_code:
+          $ref: '#/components/schemas/GeneticCode'
+          default: Universal
+        branches:
+          type: array
+          items:
+            type: string
+          default: []
+          description: >-
+            Branches to include in the analysis. If empty, all branches are
+            included.
+        blb:
+          type: number
+          minimum: 0
+          maximum: 1
+          default: 1
+          description: Bag of little bootstrap alignment resampling rate
+    AbsrelResult:
+      type: object
+      properties:
+        job_id:
+          $ref: '#/components/schemas/Hash'
+        result:
+          allOf:
+            - $ref: '#/components/schemas/BaseResponse'
+            - type: object
+              properties:
+                fits:
+                  type: object
+                  additionalProperties:
+                    type: object
+                    properties:
+                      AIC-c:
+                        type: number
+                      Log Likelihood:
+                        type: number
+                      Rate Distributions:
+                        type: object
+                        additionalProperties:
+                          type: object
+                          properties:
+                            Mean:
+                              type: number
+                            Median:
+                              type: number
+                            2.5%:
+                              type: number
+                            97.5%:
+                              type: number
+                      display order:
+                        type: number
+                      estimated parameters:
+                        type: number
+                      Equilibrium frequencies:
+                        type: array
+                        items:
+                          type: array
+                          items:
+                            type: number
+                test results:
+                  type: object
+                  properties:
+                    P-value threshold:
+                      type: number
+                    tested:
+                      type: integer
+                    positive test results:
+                      type: integer
+                tested:
+                  type: object
+                  additionalProperties:
+                    type: object
+                    additionalProperties:
+                      type: string
+                data partitions:
+                  type: object
+                  additionalProperties:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      coverage:
+                        type: array
+                        items:
+                          type: array
+                          items:
+                            type: integer
+                branch attributes:
+                  type: object
+                  properties:
+                    additionalProperties:
+                      type: object
+                      additionalProperties:
+                        type: object
+                        properties:
+                          original name:
+                            type: string
+                          Nucleotide GTR:
+                            type: number
+                          Baseline MG94xREV:
+                            type: number
+                          Baseline MG94xREV omega ratio:
+                            type: number
+                          Rate classes:
+                            type: integer
+                          Full adaptive model:
+                            type: number
+                          Rate Distributions:
+                            type: array
+                            items:
+                              type: array
+                              items:
+                                type: number
+                          LRT:
+                            type: number
+                          Uncorrected P-value:
+                            type: number
+                          Corrected P-value:
+                            type: number
+                    attributes:
+                      type: object
+                      additionalProperties:
+                        type: object
+                        properties:
+                          attribute type:
+                            type: string
+                          display order:
+                            type: integer
+                timers:
+                  type: object
+                  additionalProperties:
+                    type: object
+                    properties:
+                      timer:
+                        type: integer
+                      order:
+                        type: integer
     DatasetMeta:
       type: object
       properties:
