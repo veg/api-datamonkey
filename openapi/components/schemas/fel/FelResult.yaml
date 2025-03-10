@@ -37,29 +37,38 @@ properties:
           branch attributes:
             type: object
             properties:
-              attrbitutes:
+              # Numeric keys containing branch data (e.g., "0")
+              additionalProperties:
+                type: object
+                additionalProperties:
+                  type: object
+                  properties:
+                    Global MG94xREV:
+                      type: number
+                    Nucleotide GTR:
+                      type: number
+                    original name:
+                      type: string
+              # Attributes metadata
+              attributes:
                 type: object
                 additionalProperties:
                   type: object
                   properties:
                     attribute type:
                       type: string
-                    display_order:
+                    display order:
                       type: integer
-            additionalProperties:
-              type: object
-              additionalProperties:
-                type: object
-                properties:
-                  Global MG94xREV:
-                    type: number
-                  Nucleotide GTR:
-                    type: number
-                  original name:
-                    type: string
           MLE:
             type: object
             properties:
+              # Headers field that was missing
+              headers:
+                type: array
+                items:
+                  type: array
+                  items:
+                    type: string
               content:
                 type: object
                 additionalProperties:

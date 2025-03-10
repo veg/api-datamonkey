@@ -1,0 +1,121 @@
+type: object
+properties:
+  job_id:
+    $ref: ../Hash.yaml
+  result:
+    allOf:
+      - $ref: ../method_response/BaseResponse.yaml
+      - type: object
+        properties:
+          fits:
+            type: object
+            additionalProperties:
+              type: object
+              properties:
+                AIC-c:
+                  type: number
+                Log Likelihood:
+                  type: number
+                Rate Distributions:
+                  type: object
+                  additionalProperties:
+                    type: object
+                    properties:
+                      Mean:
+                        type: number
+                      Median:
+                        type: number
+                      "2.5%":
+                        type: number
+                      "97.5%":
+                        type: number
+                display order:
+                  type: number
+                estimated parameters:
+                  type: number
+                Equilibrium frequencies:
+                  type: array
+                  items:
+                    type: array
+                    items:
+                      type: number
+          test results:
+            type: object
+            properties:
+              P-value threshold:
+                type: number
+              tested:
+                type: integer
+              positive test results:
+                type: integer
+          tested:
+            type: object
+            additionalProperties:
+              type: object
+              additionalProperties:
+                type: string
+          data partitions:
+            type: object
+            additionalProperties:
+              type: object
+              properties:
+                name:
+                  type: string
+                coverage:
+                  type: array
+                  items:
+                    type: array
+                    items:
+                      type: integer
+          branch attributes:
+            type: object
+            properties:
+              # Numeric keys containing branch data (e.g., "0")
+              additionalProperties:
+                type: object
+                additionalProperties:
+                  type: object
+                  properties:
+                    original name:
+                      type: string
+                    Nucleotide GTR:
+                      type: number
+                    Baseline MG94xREV:
+                      type: number
+                    Baseline MG94xREV omega ratio:
+                      type: number
+                    Rate classes:
+                      type: integer
+                    Full adaptive model:
+                      type: number
+                    Rate Distributions:
+                      type: array
+                      items:
+                        type: array
+                        items:
+                          type: number
+                    LRT:
+                      type: number
+                    Uncorrected P-value:
+                      type: number
+                    Corrected P-value:
+                      type: number
+              # Attributes metadata
+              attributes:
+                type: object
+                additionalProperties:
+                  type: object
+                  properties:
+                    attribute type:
+                      type: string
+                    display order:
+                      type: integer
+          timers:
+            type: object
+            additionalProperties:
+              type: object
+              properties:
+                timer:
+                  type: integer
+                order:
+                  type: integer
