@@ -7,4 +7,6 @@ additionalProperties:
     coverage:
       type: array
       items:
-        type: integer
+        type: array
+        items:
+          type: integer

@@ -513,12 +513,14 @@ components:
             - tested
             - background
     TimersInfo:
-      type: array
-      items:
+      type: object
+      additionalProperties:
         type: object
         properties:
-          order: integer
-          time: integer
+          order:
+            type: integer
+          timer:
+            type: integer
     PartitionsInfo:
       type: object
       additionalProperties:
@@ -529,7 +531,9 @@ components:
           coverage:
             type: array
             items:
-              type: integer
+              type: array
+              items:
+                type: integer
     BaseResponse:
       type: object
       properties:
@@ -573,12 +577,6 @@ components:
                         type: number
                       Rate Distributions:
                         type: object
-                        additionalProperties:
-                          type: array
-                          items:
-                            type: array
-                            items:
-                              type: number
                       display order:
                         type: number
                       estimated parameters:
@@ -716,25 +714,6 @@ components:
                         type: number
                       Rate Distributions:
                         type: object
-                        properties:
-                          Test:
-                            type: object
-                            additionalProperties:
-                              type: object
-                              properties:
-                                omega:
-                                  type: number
-                                proportion:
-                                  type: number
-                          Synonymous site-to-site rates:
-                            type: object
-                            additionalProperties:
-                              type: object
-                              properties:
-                                proportion:
-                                  type: number
-                                rate:
-                                  type: number
                       display order:
                         type: number
                       estimated parameters:
@@ -899,17 +878,6 @@ components:
                         type: number
                       Rate Distributions:
                         type: object
-                        additionalProperties:
-                          type: object
-                          properties:
-                            Mean:
-                              type: number
-                            Median:
-                              type: number
-                            2.5%:
-                              type: number
-                            97.5%:
-                              type: number
                       display order:
                         type: number
                       estimated parameters:

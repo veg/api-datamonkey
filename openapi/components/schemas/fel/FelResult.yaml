@@ -24,12 +24,6 @@ properties:
                   type: number
                 Rate Distributions:
                   type: object
-                  additionalProperties:
-                    type: array
-                    items:
-                      type: array
-                      items:
-                        type: number
                 display order:
                   type: number
                 estimated parameters:

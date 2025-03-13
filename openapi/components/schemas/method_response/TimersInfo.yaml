@@ -1,6 +1,8 @@
-type: array
-items:
+type: object
+additionalProperties:
   type: object
   properties:
-    order: integer
-    time: integer
+    order:
+      type: integer
+    timer:
+      type: integer

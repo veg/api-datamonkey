@@ -20,25 +20,6 @@ properties:
                   type: number
                 Rate Distributions:
                   type: object
-                  properties:
-                    Test:
-                      type: object
-                      additionalProperties:
-                        type: object
-                        properties:
-                          omega:
-                            type: number
-                          proportion:
-                            type: number
-                    Synonymous site-to-site rates:
-                      type: object
-                      additionalProperties:
-                        type: object
-                        properties:
-                          proportion:
-                            type: number
-                          rate:
-                            type: number
                 display order:
                   type: number
                 estimated parameters:
