@@ -1,0 +1,67 @@
+type: object
+properties:
+  input:
+    type: object
+    properties:
+      file_name:
+        type: string
+        description: Name of the input file
+      number_of_sequences:
+        type: integer
+        description: Number of sequences in the alignment
+      number_of_sites:
+        type: integer
+        description: Number of sites in the alignment
+      partition_count:
+        type: integer
+        description: Number of partitions in the analysis
+  analysis:
+    type: object
+    properties:
+      authors:
+        type: string
+        description: Authors of the analysis method
+      citation:
+        type: string
+        description: Citation for the analysis method
+      version:
+        type: string
+        description: Version of the analysis method
+      info:
+        type: string
+        description: Information about the analysis method
+  tested:
+    type: object
+    description: Mapping of branch names to their test groups (e.g., "TREATED", "NAIVE", "background")
+    additionalProperties:
+      type: string
+  MLE:
+    type: object
+    properties:
+      headers:
+        type: array
+        description: Headers describing the columns in the content array
+        items:
+          type: array
+          items:
+            type: string
+      content:
+        type: object
+        description: Site-specific results with statistical values
+        additionalProperties:
+          type: array
+          items:
+            type: array
+            description: Array of values for each site
+            items:
+              type: number
+  branch_attributes:
+    type: object
+    description: Attributes for each branch in the phylogenetic tree
+    additionalProperties:
+      type: object
+  fits:
+    type: object
+    description: Model fit statistics
+    additionalProperties:
+      type: object

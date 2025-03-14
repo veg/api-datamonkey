@@ -1,0 +1,37 @@
+type: object
+required:
+  - alignment
+  - tree
+  - branch_sets
+properties:
+  alignment:
+    type: string
+    description: Path to the in-frame codon alignment file (e.g., .fasta, .phy)
+  tree:
+    type: string
+    description: Path to the phylogenetic tree file
+  branch_sets:
+    type: array
+    description: Array of branch sets to be used for comparison (e.g., "Source" and "Test" groups)
+    items:
+      type: string
+  genetic_code:
+    type: string
+    description: Which genetic code should be used
+    default: "Universal"
+  srv:
+    type: string
+    description: Include synonymous rate variation in the model ("Yes" or "No")
+    default: "Yes"
+  permutations:
+    type: string
+    description: Perform permutation significance tests ("Yes" or "No")
+    default: "Yes"
+  p_value:
+    type: number
+    description: Significance value for site tests
+    default: 0.05
+  q_value:
+    type: number
+    description: Significance value for False Discovery Rate reporting
+    default: 0.20

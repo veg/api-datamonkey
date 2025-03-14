@@ -58,6 +58,8 @@ paths:
     $ref: paths/methods/busted/busted-results.yaml
   /methods/absrel-start:
     $ref: paths/methods/absrel/absrel-start-job.yaml
+  /methods/absrel-result:
+    $ref: paths/methods/absrel/absrel-results.yaml
   /methods/meme-start:
     $ref: paths/methods/meme/meme-start-job.yaml
   /methods/meme-result:
@@ -74,8 +76,10 @@ paths:
     $ref: paths/methods/bgm/bgm-start-job.yaml
   /methods/bgm-result:
     $ref: paths/methods/bgm/bgm-results.yaml
-  /methods/absrel-result:
-    $ref: paths/methods/absrel/absrel-results.yaml
+  /methods/contrast-fel-start:
+    $ref: paths/methods/contrast-fel/contrast-fel-start-job.yaml
+  /methods/contrast-fel-result:
+    $ref: paths/methods/contrast-fel/contrast-fel-results.yaml
   /datasets:
     $ref: paths/datasets.yaml
   #/datasets/qc:
