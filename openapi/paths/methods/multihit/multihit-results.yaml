@@ -1,0 +1,41 @@
+get:
+  tags:
+    - Methods
+  summary: Get MULTI-HIT analysis results
+  description: |
+    Retrieve the results of a previously submitted MULTI-HIT analysis job.
+    Results include evidence ratios for different substitution types, site-specific substitutions,
+    model fitting information, and statistical test results comparing different models.
+  operationId: getMultihitResults
+  parameters:
+    - name: id
+      in: query
+      description: Job ID
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: MULTI-HIT analysis results
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/multihit/MultihitResult.yaml'
+    '400':
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/Error.yaml'
+    '404':
+      description: Job not found
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/Error.yaml'
+    '500':
+      description: Server error
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/Error.yaml'
