@@ -62,6 +62,10 @@ paths:
     $ref: paths/methods/meme/meme-start-job.yaml
   /methods/meme-result:
     $ref: paths/methods/meme/meme-results.yaml
+  /methods/relax-start:
+    $ref: paths/methods/relax/relax-start-job.yaml
+  /methods/relax-result:
+    $ref: paths/methods/relax/relax-results.yaml
   /methods/absrel-result:
     $ref: paths/methods/absrel/absrel-results.yaml
   /datasets:
