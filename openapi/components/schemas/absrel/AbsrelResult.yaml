@@ -18,17 +18,6 @@ properties:
                   type: number
                 Rate Distributions:
                   type: object
-                  additionalProperties:
-                    type: object
-                    properties:
-                      Mean:
-                        type: number
-                      Median:
-                        type: number
-                      "2.5%":
-                        type: number
-                      "97.5%":
-                        type: number
                 display order:
                   type: number
                 estimated parameters:

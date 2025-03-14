@@ -1,0 +1,39 @@
+type: object
+properties:
+  alignment:
+    $ref: ../Hash.yaml
+    description: Handle to the alignment
+    required: true
+  tree:
+    $ref: ../Hash.yaml
+    description: Handle to the tree file
+    required: true
+  genetic_code:
+    $ref: ../GeneticCode.yaml
+    default: "Universal"
+  test_branches:
+    type: array
+    description: Branches to be considered as 'Test'
+    default: []
+    items:
+      type: string
+  reference_branches:
+    type: array
+    description: Branches to be considered as 'Reference'
+    default: []
+    items:
+      type: string
+  models:
+    type: string
+    enum: ["All", "Minimal"]
+    default: "All"
+    description: Type of analysis to run (All for descriptive models and RELAX test, Minimal for only the RELAX test)
+  rates:
+    type: integer
+    default: 3
+    description: Number of omega rate classes
+  kill_zero_lengths:
+    type: string
+    enum: ["Yes", "No"]
+    default: "No"
+    description: Specify whether to handle zero-length branches

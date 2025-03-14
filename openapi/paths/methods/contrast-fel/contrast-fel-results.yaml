@@ -1,0 +1,28 @@
+post:
+  tags:
+    - CONTRAST-FEL
+  summary: Get CONTRAST-FEL analysis results
+  description: |
+    Retrieves the results of a previously submitted CONTRAST-FEL job. CONTRAST-FEL investigates whether 
+    selective pressures differ between two or more sets of branches at a site by estimating site-specific 
+    synonymous and non-synonymous substitution rates.
+  operationId: getCONTRASTFELJob
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../../components/schemas/contrast-fel/ContrastFelRequest.yaml'
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/contrast-fel/ContrastFelResult.yaml'
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/ServerError.yaml'

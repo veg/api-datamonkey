@@ -1,0 +1,189 @@
+type: object
+properties:
+  job_id:
+    $ref: ../Hash.yaml
+  result:
+    allOf:
+      - $ref: ../method_response/BaseResponse.yaml
+      - type: object
+        properties:
+          fits:
+            type: object
+            properties:
+              Nucleotide GTR:
+                type: object
+                properties:
+                  Log Likelihood:
+                    type: number
+                  estimated parameters:
+                    type: integer
+                  AIC-c:
+                    type: number
+                  Equilibrium frequencies:
+                    type: array
+                    items:
+                      type: array
+                      items:
+                        type: number
+                  Rate Distributions:
+                    type: object
+                    additionalProperties:
+                      type: number
+                  display order:
+                    type: integer
+              MG94xREV with separate rates for branch sets:
+                type: object
+                properties:
+                  Log Likelihood:
+                    type: number
+                  estimated parameters:
+                    type: integer
+                  AIC-c:
+                    type: number
+                  Equilibrium frequencies:
+                    type: array
+                    items:
+                      type: array
+                      items:
+                        type: number
+                  Rate Distributions:
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: array
+                        items:
+                          type: number
+                  display order:
+                    type: integer
+              General descriptive:
+                type: object
+                properties:
+                  Log Likelihood:
+                    type: number
+                  estimated parameters:
+                    type: integer
+                  AIC-c:
+                    type: number
+                  Rate Distributions:
+                    type: object
+                    properties:
+                      Shared:
+                        type: object
+                        additionalProperties:
+                          type: object
+                          properties:
+                            omega:
+                              type: number
+                            proportion:
+                              type: number
+                  display order:
+                    type: integer
+              RELAX alternative:
+                type: object
+                properties:
+                  Log Likelihood:
+                    type: number
+                  estimated parameters:
+                    type: integer
+                  AIC-c:
+                    type: number
+                  Rate Distributions:
+                    type: object
+                    properties:
+                      Test:
+                        type: object
+                        additionalProperties:
+                          type: object
+                          properties:
+                            omega:
+                              type: number
+                            proportion:
+                              type: number
+                      Reference:
+                        type: object
+                        additionalProperties:
+                          type: object
+                          properties:
+                            omega:
+                              type: number
+                            proportion:
+                              type: number
+                  display order:
+                    type: integer
+              RELAX null:
+                type: object
+                properties:
+                  Log Likelihood:
+                    type: number
+                  estimated parameters:
+                    type: integer
+                  AIC-c:
+                    type: number
+                  Rate Distributions:
+                    type: object
+                    properties:
+                      Test:
+                        type: object
+                        additionalProperties:
+                          type: object
+                          properties:
+                            omega:
+                              type: number
+                            proportion:
+                              type: number
+                      Reference:
+                        type: object
+                        additionalProperties:
+                          type: object
+                          properties:
+                            omega:
+                              type: number
+                            proportion:
+                              type: number
+                  display order:
+                    type: integer
+          test results:
+            type: object
+            properties:
+              p-value:
+                type: number
+              relaxation or intensification parameter:
+                type: number
+              test:
+                type: string
+              alternative:
+                type: string
+              null:
+                type: string
+              background:
+                type: string
+              log likelihood ratio:
+                type: number
+              degrees of freedom:
+                type: integer
+              branch attributes:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties:
+                    type: object
+                    properties:
+                      original name:
+                        type: string
+                      Nucleotide GTR:
+                        type: number
+                      MG94xREV with separate rates for branch sets:
+                        type: number
+                      General descriptive:
+                        type: number
+                      k (general descriptive):
+                        type: number
+                      RELAX null:
+                        type: number
+                      RELAX alternative:
+                        type: number
+                      k (RELAX alternative):
+                        type: number
+                      tested:
+                        type: boolean

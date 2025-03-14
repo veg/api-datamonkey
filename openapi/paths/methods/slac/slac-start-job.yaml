@@ -1,0 +1,41 @@
+parameters:
+  - name: pretty_print
+    in: query
+    description: Pretty print response
+    schema:
+      type: boolean
+post:
+  tags:
+    - SLAC
+  summary: Start a SLAC analysis
+  description: |
+    SLAC (Single Likelihood Ancestor Counting) uses a maximum likelihood ancestral state reconstruction
+    and minimum path substitution counting to estimate site-level dS and dN, and applies a simple
+    binomial-based test to test if dS differs from dN. The estimates aggregate information over all branches,
+    so the signal is derived from pervasive diversification or conservation.
+  operationId: startSLACJob
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../../components/schemas/slac/SlacRequest.yaml'
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/JobStatus.yaml'
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/InvalidDataError.yaml'
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/ServerError.yaml'

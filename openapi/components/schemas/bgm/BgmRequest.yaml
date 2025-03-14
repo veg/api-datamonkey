@@ -1,0 +1,42 @@
+type: object
+properties:
+  alignment:
+    $ref: ../Hash.yaml
+    description: Handle to the alignment
+    required: true
+  tree:
+    $ref: ../Hash.yaml
+    description: Handle to the tree file
+    required: true
+  branches:
+    type: string
+    default: "All"
+    description: Specify branches to test
+  genetic_code:
+    $ref: ../GeneticCode.yaml
+    default: "Universal"
+  data_type:
+    type: string
+    enum: ["nucleotide", "amino-acid", "codon"]
+    default: "codon"
+    description: The type of data being analyzed
+  steps:
+    type: integer
+    default: 100000
+    description: Number of MCMC steps to sample
+  burn_in:
+    type: integer
+    default: 10000
+    description: Number of MCMC steps to discard as burn-in
+  samples:
+    type: integer
+    default: 100
+    description: Number of samples to extract from the chain
+  max_parents:
+    type: integer
+    default: 1
+    description: Maximum number of parents allowed per node
+  min_subs:
+    type: integer
+    default: 1
+    description: Minimum number of substitutions per site to include in the analysis

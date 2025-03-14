@@ -1,0 +1,36 @@
+type: object
+properties:
+  alignment:
+    $ref: ../Hash.yaml
+    description: Handle to the alignment
+    required: true
+  tree:
+    $ref: ../Hash.yaml
+    description: Handle to the tree file
+    required: true
+  genetic_code:
+    $ref: ../GeneticCode.yaml
+    default: "Universal"
+  multiple_hits:
+    type: string
+    enum: ["None", "Double", "Double+Triple"]
+    default: "None"
+    description: Specify handling of multiple nucleotide substitutions
+  site_multihit:
+    type: string
+    enum: ["Estimate", "Global"]
+    default: "Estimate"
+    description: Specify whether to estimate multiple hit rates for each site
+  rates:
+    type: integer
+    default: 2
+    description: Number of different categories of non-synonymous rates
+  resample:
+    type: number
+    default: 0
+    description: Number of bootstrapping replicates
+  impute_states:
+    type: string
+    enum: ["Yes", "No"]
+    default: "No"
+    description: Option to impute likely character states for missing data

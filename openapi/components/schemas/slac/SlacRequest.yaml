@@ -1,0 +1,28 @@
+type: object
+description: Request parameters for SLAC (Single Likelihood Ancestor Counting) analysis
+required:
+  - alignment_file
+  - genetic_code
+properties:
+  alignment_file:
+    type: string
+    description: Path to the alignment file (e.g., .fasta, .nex, .phy)
+  genetic_code:
+    type: string
+    description: The genetic code to use for the analysis
+    default: "Universal"
+  branches:
+    type: string
+    description: Specify branches to test
+    default: "All"
+  samples:
+    type: integer
+    description: Number of samples for ancestral reconstruction uncertainty
+    default: 100
+    minimum: 1
+  pvalue:
+    type: number
+    description: Threshold for statistical significance
+    default: 0.1
+    minimum: 0
+    maximum: 1

@@ -1,0 +1,40 @@
+parameters:
+  - name: pretty_print
+    in: query
+    description: Pretty print response
+    schema:
+      type: boolean
+post:
+  tags:
+    - FUBAR
+  summary: Start a FUBAR analysis
+  description: |
+    Starts a Fast Unconstrained Bayesian AppRoximation (FUBAR) job to detect sites under positive selection.
+    FUBAR uses a Bayesian approach to infer selection pressures at individual sites, providing posterior
+    probabilities of positive and negative selection.
+  operationId: startFUBARJob
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../../components/schemas/fubar/FubarRequest.yaml'
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/JobStatus.yaml'
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/InvalidDataError.yaml'
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/ServerError.yaml'

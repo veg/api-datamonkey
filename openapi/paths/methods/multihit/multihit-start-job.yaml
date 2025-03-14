@@ -1,0 +1,40 @@
+parameters:
+  - name: pretty_print
+    in: query
+    description: Pretty print response
+    schema:
+      type: boolean
+post:
+  tags:
+    - MULTI-HIT
+  summary: Start a MULTI-HIT analysis
+  description: |
+    MULTI-HIT (Multiple Hit) examines whether or not a codon alignment is better fit by models 
+    which permit multiple instantaneous substitutions. It can analyze both double-hit and 
+    triple-hit substitutions, with an option to account for synonymous triple-hit substitutions.
+  operationId: startMULTIHITJob
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../../components/schemas/multihit/MultihitRequest.yaml'
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/JobStatus.yaml'
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/InvalidDataError.yaml'
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/ServerError.yaml'

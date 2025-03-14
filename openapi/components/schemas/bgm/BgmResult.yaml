@@ -1,0 +1,53 @@
+type: object
+properties:
+  job_id:
+    $ref: ../Hash.yaml
+  result:
+    allOf:
+      - $ref: ../method_response/BaseResponse.yaml
+      - type: object
+        properties:
+          fits:
+            type: object
+            description: Model fit information
+            additionalProperties:
+              type: object
+              properties:
+                Log Likelihood:
+                  type: number
+                estimated parameters:
+                  type: integer
+                AIC-c:
+                  type: number
+                Rate Distributions:
+                  type: object
+                  nullable: true
+                display order:
+                  type: integer
+          MLE:
+            type: object
+            description: Maximum likelihood estimates
+            properties:
+              headers:
+                type: array
+                items:
+                  type: array
+                  items:
+                    type: string
+                description: Column headers for the content array
+              content:
+                type: array
+                items:
+                  type: array
+                  items:
+                    type: number
+                description: Site pair data with correlation values
+          branch attributes:
+            type: object
+            description: Branch-specific attributes
+            additionalProperties:
+              type: object
+              additionalProperties:
+                type: object
+                additionalProperties:
+                  type: number

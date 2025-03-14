@@ -56,7 +56,6 @@ properties:
           MLE:
             type: object
             properties:
-              # Headers field that was missing
               headers:
                 type: array
                 items:

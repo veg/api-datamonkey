@@ -1,0 +1,23 @@
+type: object
+description: Request parameters for MULTI-HIT analysis
+required:
+  - alignment_file
+  - genetic_code
+properties:
+  alignment_file:
+    type: string
+    description: Path to the alignment file (e.g., .fasta, .phy)
+  genetic_code:
+    type: string
+    description: The genetic code to use for the analysis
+    default: "Universal"
+  triple_islands:
+    type: boolean
+    description: Toggle for accounting synonymous triple-hit substitutions
+    default: false
+  rate_classes:
+    type: integer
+    description: Number of rate classes to use
+    minimum: 1
+    maximum: 10
+    default: 3
