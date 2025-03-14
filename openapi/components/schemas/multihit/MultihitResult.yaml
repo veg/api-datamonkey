@@ -2,7 +2,7 @@ type: object
 description: Results from a MULTI-HIT analysis
 properties:
   job_id:
-    $ref: ../../Hash.yaml
+    $ref: ../Hash.yaml
   result:
     type: object
     properties:
