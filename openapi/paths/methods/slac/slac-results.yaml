@@ -1,4 +1,10 @@
-get:
+parameters:
+  - name: pretty_print
+    in: query
+    description: Pretty print response
+    schema:
+      type: boolean
+post:
   tags:
     - SLAC
   summary: Get SLAC analysis results
@@ -6,35 +12,22 @@ get:
     Retrieve the results of a previously submitted SLAC (Single Likelihood Ancestor Counting) analysis job.
     Results include model fitting information, branch attributes, and site-specific dN/dS estimates.
   operationId: getSlacResults
-  parameters:
-    - name: id
-      in: query
-      description: Job ID
-      required: true
-      schema:
-        type: string
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../../components/schemas/slac/SlacRequest.yaml'
   responses:
     '200':
-      description: SLAC analysis results
+      description: Success
       content:
         application/json:
           schema:
             $ref: '../../../components/schemas/slac/SlacResult.yaml'
-    '400':
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '../../../components/schemas/Error.yaml'
-    '404':
-      description: Job not found
-      content:
-        application/json:
-          schema:
-            $ref: '../../../components/schemas/Error.yaml'
     '500':
-      description: Server error
+      description: Internal Server Error
       content:
         application/json:
           schema:
-            $ref: '../../../components/schemas/Error.yaml'
+            $ref: '../../../components/schemas/ServerError.yaml'

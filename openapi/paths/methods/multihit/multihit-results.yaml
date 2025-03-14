@@ -1,4 +1,10 @@
-get:
+parameters:
+  - name: pretty_print
+    in: query
+    description: Pretty print response
+    schema:
+      type: boolean
+post:
   tags:
     - MULTI-HIT
   summary: Get MULTI-HIT analysis results
@@ -7,35 +13,22 @@ get:
     Results include evidence ratios for different substitution types, site-specific substitutions,
     model fitting information, and statistical test results comparing different models.
   operationId: getMultihitResults
-  parameters:
-    - name: id
-      in: query
-      description: Job ID
-      required: true
-      schema:
-        type: string
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../../components/schemas/multihit/MultihitRequest.yaml'
   responses:
     '200':
-      description: MULTI-HIT analysis results
+      description: Success
       content:
         application/json:
           schema:
             $ref: '../../../components/schemas/multihit/MultihitResult.yaml'
-    '400':
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '../../../components/schemas/Error.yaml'
-    '404':
-      description: Job not found
-      content:
-        application/json:
-          schema:
-            $ref: '../../../components/schemas/Error.yaml'
     '500':
-      description: Server error
+      description: Internal Server Error
       content:
         application/json:
           schema:
-            $ref: '../../../components/schemas/Error.yaml'
+            $ref: '../../../components/schemas/ServerError.yaml'

@@ -12,13 +12,17 @@ properties:
     $ref: ../GeneticCode.yaml
     default: "Universal"
   test_branches:
-    type: string
+    type: array
     description: Branches to be considered as 'Test'
-    required: true
+    default: []
+    items:
+      type: string
   reference_branches:
-    type: string
+    type: array
     description: Branches to be considered as 'Reference'
-    required: true
+    default: []
+    items:
+      type: string
   models:
     type: string
     enum: ["All", "Minimal"]

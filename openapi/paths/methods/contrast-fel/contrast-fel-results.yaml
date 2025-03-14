@@ -1,4 +1,4 @@
-get:
+post:
   tags:
     - CONTRAST-FEL
   summary: Get CONTRAST-FEL analysis results
@@ -7,35 +7,22 @@ get:
     selective pressures differ between two or more sets of branches at a site by estimating site-specific 
     synonymous and non-synonymous substitution rates.
   operationId: getContrastFelResults
-  parameters:
-    - name: id
-      in: query
-      description: Job ID
-      required: true
-      schema:
-        type: string
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../../components/schemas/contrast-fel/ContrastFelRequest.yaml'
   responses:
     '200':
-      description: Job results retrieved successfully
+      description: Success
       content:
         application/json:
           schema:
             $ref: '../../../components/schemas/contrast-fel/ContrastFelResult.yaml'
-    '400':
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '../../../components/schemas/Error.yaml'
-    '404':
-      description: Job not found
-      content:
-        application/json:
-          schema:
-            $ref: '../../../components/schemas/Error.yaml'
     '500':
-      description: Server error
+      description: Internal Server Error
       content:
         application/json:
           schema:
-            $ref: '../../../components/schemas/Error.yaml'
+            $ref: '../../../components/schemas/ServerError.yaml'

@@ -21,6 +21,10 @@ externalDocs:
   description: Use Datamonkey today!
   url: 'https://datamonkey.org'
 tags:
+  - name: Health
+    description: Check health of Datamonkey server
+  - name: File Upload and QC
+    description: Examples uploading files to Datamonkey
   - name: FEL
     description: Examples starting jobs and fetching results for FEL
   - name: BUSTED
@@ -31,14 +35,10 @@ tags:
     description: Examples starting jobs and fetching results for BGM (Bayesian Graphical Model)
   - name: CONTRAST-FEL
     description: Examples starting jobs and fetching results for CONTRAST-FEL (Fixed Effects Likelihood with Contrast)
-  - name: File Upload and QC
-    description: Examples uploading files to Datamonkey
   - name: FUBAR
     description: Examples starting jobs and fetching results for FUBAR (Fast Unconstrained Bayesian AppRoximation)
   - name: GARD
     description: Examples starting jobs and fetching results for GARD (Genetic Algorithm for Recombination Detection)
-  - name: Health
-    description: Check health of Datamonkey server
   - name: MEME
     description: Examples starting jobs and fetching results for MEME (Mixed Effects Model of Evolution)
   - name: MULTI-HIT

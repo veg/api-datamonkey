@@ -1,3 +1,9 @@
+parameters:
+  - name: pretty_print
+    in: query
+    description: Pretty print response
+    schema:
+      type: boolean
 post:
   tags:
     - FUBAR
@@ -7,35 +13,22 @@ post:
     FUBAR uses a Bayesian approach to infer selection pressures at individual sites, providing posterior
     probabilities of positive and negative selection.
   operationId: getFubarResults
-  parameters:
-    - name: id
-      in: query
-      description: Job ID
-      required: true
-      schema:
-        type: string
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../../components/schemas/fubar/FubarRequest.yaml'
   responses:
     '200':
-      description: Job results retrieved successfully
+      description: Success
       content:
         application/json:
           schema:
             $ref: '../../../components/schemas/fubar/FubarResult.yaml'
-    '400':
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '../../../components/schemas/Error.yaml'
-    '404':
-      description: Job not found
-      content:
-        application/json:
-          schema:
-            $ref: '../../../components/schemas/Error.yaml'
     '500':
-      description: Server error
+      description: Internal Server Error
       content:
         application/json:
           schema:
-            $ref: '../../../components/schemas/Error.yaml'
+            $ref: '../../../components/schemas/ServerError.yaml'

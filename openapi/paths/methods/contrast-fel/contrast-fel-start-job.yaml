@@ -1,3 +1,9 @@
+parameters:
+  - name: pretty_print
+    in: query
+    description: Pretty print response
+    schema:
+      type: boolean
 post:
   tags:
     - CONTRAST-FEL
@@ -15,20 +21,20 @@ post:
           $ref: '../../../components/schemas/contrast-fel/ContrastFelRequest.yaml'
   responses:
     '200':
-      description: Job started successfully
+      description: Success
       content:
         application/json:
           schema:
-            $ref: '../../../components/schemas/JobResponse.yaml'
-    '400':
-      description: Bad request
+            $ref: '../../../components/schemas/JobStatus.yaml'
+    '422':
+      description: Unprocessable Entity
       content:
         application/json:
           schema:
-            $ref: '../../../components/schemas/Error.yaml'
+            $ref: '../../../components/schemas/InvalidDataError.yaml'
     '500':
-      description: Server error
+      description: Internal Server Error
       content:
         application/json:
           schema:
-            $ref: '../../../components/schemas/Error.yaml'
+            $ref: '../../../components/schemas/ServerError.yaml'
