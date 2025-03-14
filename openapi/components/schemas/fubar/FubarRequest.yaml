@@ -1,0 +1,27 @@
+type: object
+required:
+  - alignment
+  - tree
+properties:
+  alignment:
+    type: string
+    description: Path to the in-frame codon alignment file (e.g., .fasta, .nex)
+  tree:
+    type: string
+    description: Path to the phylogenetic tree file
+  genetic_code:
+    type: string
+    description: Which genetic code should be used
+    default: "Universal"
+  grid_points:
+    type: integer
+    description: Number of grid points for the Bayesian analysis (must be between 5 and 50)
+    default: 20
+    minimum: 5
+    maximum: 50
+  concentration_parameter:
+    type: number
+    description: Concentration parameter for the Dirichlet prior in the Bayesian estimation
+    default: 0.5
+    minimum: 0.001
+    maximum: 1

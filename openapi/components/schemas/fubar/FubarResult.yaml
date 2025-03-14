@@ -1,0 +1,73 @@
+type: object
+properties:
+  analysis:
+    type: object
+    properties:
+      info:
+        type: string
+        description: Information about the FUBAR analysis
+      version:
+        type: string
+        description: Version of the FUBAR method
+      citation:
+        type: string
+        description: Citation for the FUBAR method
+      authors:
+        type: string
+        description: Authors of the FUBAR method
+      contact:
+        type: string
+        description: Contact information for the authors
+      requirements:
+        type: string
+        description: Requirements for running FUBAR
+  input:
+    type: object
+    properties:
+      file_name:
+        type: string
+        description: Name of the input file
+      number_of_sequences:
+        type: integer
+        description: Number of sequences in the alignment
+      number_of_sites:
+        type: integer
+        description: Number of sites in the alignment
+      partition_count:
+        type: integer
+        description: Number of partitions in the analysis
+      trees:
+        type: object
+        description: Trees used in the analysis
+        additionalProperties:
+          type: string
+  fits:
+    type: object
+    description: Model fit statistics
+    additionalProperties:
+      type: object
+  timers:
+    type: object
+    description: Timing information for different stages of the analysis
+    additionalProperties:
+      type: object
+  MLE:
+    type: object
+    properties:
+      headers:
+        type: array
+        description: Headers describing the columns in the content array
+        items:
+          type: array
+          items:
+            type: string
+      content:
+        type: object
+        description: Site-specific results with statistical values
+        additionalProperties:
+          type: array
+          items:
+            type: array
+            description: Array of values for each site
+            items:
+              type: number

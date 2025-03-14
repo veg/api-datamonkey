@@ -80,6 +80,10 @@ paths:
     $ref: paths/methods/contrast-fel/contrast-fel-start-job.yaml
   /methods/contrast-fel-result:
     $ref: paths/methods/contrast-fel/contrast-fel-results.yaml
+  /methods/fubar-start:
+    $ref: paths/methods/fubar/fubar-start-job.yaml
+  /methods/fubar-result:
+    $ref: paths/methods/fubar/fubar-results.yaml
   /datasets:
     $ref: paths/datasets.yaml
   #/datasets/qc:

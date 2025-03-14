@@ -1,0 +1,34 @@
+post:
+  tags:
+    - methods
+  summary: Start a FUBAR job
+  description: |
+    Starts a Fast Unconstrained Bayesian AppRoximation (FUBAR) job to detect sites under positive selection.
+    FUBAR uses a Bayesian approach to infer selection pressures at individual sites, providing posterior
+    probabilities of positive and negative selection.
+  operationId: startFubarJob
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../../components/schemas/fubar/FubarRequest.yaml'
+  responses:
+    '200':
+      description: Job started successfully
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/JobResponse.yaml'
+    '400':
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/Error.yaml'
+    '500':
+      description: Server error
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/Error.yaml'
