@@ -70,6 +70,10 @@ paths:
     $ref: paths/methods/gard/gard-start-job.yaml
   /methods/gard-result:
     $ref: paths/methods/gard/gard-results.yaml
+  /methods/bgm-start:
+    $ref: paths/methods/bgm/bgm-start-job.yaml
+  /methods/bgm-result:
+    $ref: paths/methods/bgm/bgm-results.yaml
   /methods/absrel-result:
     $ref: paths/methods/absrel/absrel-results.yaml
   /datasets:
