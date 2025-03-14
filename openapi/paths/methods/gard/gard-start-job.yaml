@@ -7,7 +7,7 @@ parameters:
 post:
   tags:
     - GARD
-  summary: Start and monitor a GARD job
+  summary: Start a GARD analysis
   operationId: startGARDJob
   requestBody:
     required: true

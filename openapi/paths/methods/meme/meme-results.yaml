@@ -7,14 +7,14 @@ parameters:
 post:
   tags:
     - MEME
-  summary: Get a MEME job result
+  summary: Get MEME analysis results
   operationId: getMEMEJob
   requestBody:
     required: true
     content:
       application/json:
         schema:
-          $ref: ../../../components/schemas/meme/MemeRequest.yaml
+          $ref: ../../../components/schemas/meme/MemeRequest.yaml  
   responses:
     '200':
       description: Success

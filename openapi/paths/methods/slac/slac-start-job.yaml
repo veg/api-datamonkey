@@ -1,6 +1,6 @@
 post:
   tags:
-    - Methods
+    - SLAC
   summary: Start a SLAC analysis
   description: |
     SLAC (Single Likelihood Ancestor Counting) uses a maximum likelihood ancestral state reconstruction

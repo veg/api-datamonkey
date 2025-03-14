@@ -1,7 +1,7 @@
-get:
+post:
   tags:
-    - methods
-  summary: Get FUBAR job results
+    - FUBAR
+  summary: Get FUBAR analysis results
   description: |
     Retrieves the results of a previously submitted Fast Unconstrained Bayesian AppRoximation (FUBAR) job.
     FUBAR uses a Bayesian approach to infer selection pressures at individual sites, providing posterior

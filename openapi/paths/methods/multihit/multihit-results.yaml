@@ -1,6 +1,6 @@
 get:
   tags:
-    - Methods
+    - MULTI-HIT
   summary: Get MULTI-HIT analysis results
   description: |
     Retrieve the results of a previously submitted MULTI-HIT analysis job.

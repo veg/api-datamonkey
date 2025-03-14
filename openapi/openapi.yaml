@@ -27,10 +27,26 @@ tags:
     description: Examples starting jobs and fetching results for BUSTED
   - name: ABSREL
     description: Examples starting jobs and fetching results for ABSREL
+  - name: BGM
+    description: Examples starting jobs and fetching results for BGM (Bayesian Graphical Model)
+  - name: CONTRAST-FEL
+    description: Examples starting jobs and fetching results for CONTRAST-FEL (Fixed Effects Likelihood with Contrast)
   - name: File Upload and QC
     description: Examples uploading files to Datamonkey
+  - name: FUBAR
+    description: Examples starting jobs and fetching results for FUBAR (Fast Unconstrained Bayesian AppRoximation)
+  - name: GARD
+    description: Examples starting jobs and fetching results for GARD (Genetic Algorithm for Recombination Detection)
   - name: Health
     description: Check health of Datamonkey server
+  - name: MEME
+    description: Examples starting jobs and fetching results for MEME (Mixed Effects Model of Evolution)
+  - name: MULTI-HIT
+    description: Examples starting jobs and fetching results for MULTI-HIT (Multiple Hit) analysis
+  - name: RELAX
+    description: Examples starting jobs and fetching results for RELAX (Hypothesis testing framework to detect relaxation of selection)
+  - name: SLAC
+    description: Examples starting jobs and fetching results for SLAC (Single Likelihood Ancestor Counting) analysis
   - name: Codon Aware Alignments
     description: Examples building codon-aware alignments from uploaded data. Somewhere over the rainbow..
   - name: Tree Building

@@ -1,7 +1,7 @@
 post:
   tags:
-    - methods
-  summary: Start a Contrast-FEL job
+    - CONTRAST-FEL
+  summary: Start a CONTRAST-FEL analysis
   description: |
     Starts a Contrast-FEL (Fixed Effects Likelihood with Contrast) job to investigate whether selective pressures differ 
     between two or more sets of branches at a site. The method estimates site-specific synonymous (alpha) and 

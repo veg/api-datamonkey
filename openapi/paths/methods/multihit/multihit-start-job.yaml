@@ -1,6 +1,6 @@
 post:
   tags:
-    - Methods
+    - MULTI-HIT
   summary: Start a MULTI-HIT analysis
   description: |
     MULTI-HIT (Multiple Hit) examines whether or not a codon alignment is better fit by models 

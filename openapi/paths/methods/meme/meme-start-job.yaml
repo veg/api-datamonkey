@@ -7,7 +7,7 @@ parameters:
 post:
   tags:
     - MEME
-  summary: Start and monitor a MEME job
+  summary: Start a MEME analysis
   operationId: startMEMEJob
   requestBody:
     required: true

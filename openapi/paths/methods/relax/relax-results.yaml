@@ -7,14 +7,14 @@ parameters:
 post:
   tags:
     - RELAX
-  summary: Get a RELAX job result
+  summary: Get RELAX analysis results
   operationId: getRELAXJob
   requestBody:
     required: true
     content:
       application/json:
         schema:
-          $ref: ../../../components/schemas/relax/RelaxRequest.yaml
+          $ref: ../../../components/schemas/relax/RelaxRequest.yaml  
   responses:
     '200':
       description: Success

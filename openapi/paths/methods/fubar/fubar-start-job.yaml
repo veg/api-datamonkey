@@ -1,7 +1,7 @@
 post:
   tags:
-    - methods
-  summary: Start a FUBAR job
+    - FUBAR
+  summary: Start a FUBAR analysis
   description: |
     Starts a Fast Unconstrained Bayesian AppRoximation (FUBAR) job to detect sites under positive selection.
     FUBAR uses a Bayesian approach to infer selection pressures at individual sites, providing posterior

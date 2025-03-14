@@ -1,6 +1,6 @@
 get:
   tags:
-    - Methods
+    - SLAC
   summary: Get SLAC analysis results
   description: |
     Retrieve the results of a previously submitted SLAC (Single Likelihood Ancestor Counting) analysis job.
