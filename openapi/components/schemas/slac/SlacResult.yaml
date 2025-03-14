@@ -1,191 +1,196 @@
 type: object
 description: Results from a SLAC (Single Likelihood Ancestor Counting) analysis
 properties:
-  analysis:
+  job_id:
+    $ref: ../../Hash.yaml
+  result:
     type: object
-    description: Metadata about the analysis
     properties:
-      info:
-        type: string
-        description: Description of the SLAC method
-      version:
-        type: string
-        description: Version of the SLAC method
-      citation:
-        type: string
-        description: Citation for the SLAC method
-      authors:
-        type: string
-        description: Authors of the SLAC method
-      contact:
-        type: string
-        description: Contact information for the SLAC method
-      requirements:
-        type: string
-        description: Requirements for the SLAC method
-  fits:
-    type: object
-    description: Model fitting information
-    properties:
-      Nucleotide_GTR:
+      analysis:
         type: object
+        description: Metadata about the analysis
         properties:
-          Log_Likelihood:
-            type: number
-          estimated_parameters:
-            type: integer
-          AIC_c:
-            type: number
-          Equilibrium_frequencies:
-            type: array
-            items:
-              type: array
-              items:
-                type: number
-          Rate_Distributions:
-            type: object
-            additionalProperties:
-              type: number
-          display_order:
-            type: integer
-      Global_MG94xREV:
+          info:
+            type: string
+            description: Description of the SLAC method
+          version:
+            type: string
+            description: Version of the SLAC method
+          citation:
+            type: string
+            description: Citation for the SLAC method
+          authors:
+            type: string
+            description: Authors of the SLAC method
+          contact:
+            type: string
+            description: Contact information for the SLAC method
+          requirements:
+            type: string
+            description: Requirements for the SLAC method
+      fits:
         type: object
+        description: Model fitting information
         properties:
-          Log_Likelihood:
-            type: number
-          estimated_parameters:
-            type: integer
-          AIC_c:
-            type: number
-          Equilibrium_frequencies:
-            type: array
-            items:
-              type: array
-              items:
-                type: number
-          Rate_Distributions:
+          Nucleotide_GTR:
             type: object
             properties:
-              distribution:
+              Log_Likelihood:
+                type: number
+              estimated_parameters:
+                type: integer
+              AIC_c:
+                type: number
+              Equilibrium_frequencies:
                 type: array
                 items:
                   type: array
                   items:
                     type: number
-          display_order:
-            type: integer
-  timers:
-    type: object
-    description: Timing information for the analysis
-    properties:
-      Total_time:
+              Rate_Distributions:
+                type: object
+                additionalProperties:
+                  type: number
+              display_order:
+                type: integer
+          Global_MG94xREV:
+            type: object
+            properties:
+              Log_Likelihood:
+                type: number
+              estimated_parameters:
+                type: integer
+              AIC_c:
+                type: number
+              Equilibrium_frequencies:
+                type: array
+                items:
+                  type: array
+                  items:
+                    type: number
+              Rate_Distributions:
+                type: object
+                properties:
+                  distribution:
+                    type: array
+                    items:
+                      type: array
+                      items:
+                        type: number
+              display_order:
+                type: integer
+      timers:
         type: object
+        description: Timing information for the analysis
         properties:
-          timer:
-            type: integer
-          order:
-            type: integer
-      Model_fitting:
+          Total_time:
+            type: object
+            properties:
+              timer:
+                type: integer
+              order:
+                type: integer
+          Model_fitting:
+            type: object
+            properties:
+              timer:
+                type: integer
+              order:
+                type: integer
+          Primary_SLAC_analysis:
+            type: object
+            properties:
+              timer:
+                type: integer
+              order:
+                type: integer
+          Ancestor_sampling_analysis:
+            type: object
+            properties:
+              timer:
+                type: integer
+              order:
+                type: integer
+      tested:
         type: object
-        properties:
-          timer:
-            type: integer
-          order:
-            type: integer
-      Primary_SLAC_analysis:
-        type: object
-        properties:
-          timer:
-            type: integer
-          order:
-            type: integer
-      Ancestor_sampling_analysis:
-        type: object
-        properties:
-          timer:
-            type: integer
-          order:
-            type: integer
-  tested:
-    type: object
-    description: Branches tested in the analysis
-    additionalProperties:
-      type: object
-      additionalProperties:
-        type: string
-  input:
-    type: object
-    description: Input information for the analysis
-    properties:
-      file_name:
-        type: string
-      number_of_sequences:
-        type: integer
-      number_of_sites:
-        type: integer
-      partition_count:
-        type: integer
-      trees:
-        type: object
+        description: Branches tested in the analysis
         additionalProperties:
-          type: string
-  data_partitions:
-    type: object
-    description: Data partitions used in the analysis
-    additionalProperties:
-      type: object
-      properties:
-        name:
-          type: string
-        coverage:
+          type: object
+          additionalProperties:
+            type: string
+      input:
+        type: object
+        description: Input information for the analysis
+        properties:
+          file_name:
+            type: string
+          number_of_sequences:
+            type: integer
+          number_of_sites:
+            type: integer
+          partition_count:
+            type: integer
+          trees:
+            type: object
+            additionalProperties:
+              type: string
+      data_partitions:
+        type: object
+        description: Data partitions used in the analysis
+        additionalProperties:
+          type: object
+          properties:
+            name:
+              type: string
+            coverage:
+              type: array
+              items:
+                type: array
+                items:
+                  type: integer
+      branch_attributes:
+        type: object
+        description: Branch-specific attributes
+        additionalProperties:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              original_name:
+                type: string
+              Nucleotide_GTR:
+                type: number
+              Global_MG94xREV:
+                type: number
+              codon:
+                type: array
+                items:
+                  type: array
+                  items:
+                    type: string
+              amino_acid:
+                type: array
+                items:
+                  type: array
+                  items:
+                    type: string
+              synonymous_substitution_count:
+                type: array
+                items:
+                  type: array
+                  items:
+                    type: number
+              nonsynonymous_substitution_count:
+                type: array
+                items:
+                  type: array
+                  items:
+                    type: number
+      site_results:
+        type: object
+        description: Site-specific results
+        additionalProperties:
           type: array
           items:
-            type: array
-            items:
-              type: integer
-  branch_attributes:
-    type: object
-    description: Branch-specific attributes
-    additionalProperties:
-      type: object
-      additionalProperties:
-        type: object
-        properties:
-          original_name:
-            type: string
-          Nucleotide_GTR:
             type: number
-          Global_MG94xREV:
-            type: number
-          codon:
-            type: array
-            items:
-              type: array
-              items:
-                type: string
-          amino_acid:
-            type: array
-            items:
-              type: array
-              items:
-                type: string
-          synonymous_substitution_count:
-            type: array
-            items:
-              type: array
-              items:
-                type: number
-          nonsynonymous_substitution_count:
-            type: array
-            items:
-              type: array
-              items:
-                type: number
-  site_results:
-    type: object
-    description: Site-specific results
-    additionalProperties:
-      type: array
-      items:
-        type: number
-      description: Array of site-specific statistics including dN, dS, p-values, etc.
+          description: Array of site-specific statistics including dN, dS, p-values, etc.

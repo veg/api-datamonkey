@@ -1,157 +1,162 @@
 type: object
 description: Results from a MULTI-HIT analysis
 properties:
-  evidence_ratios:
+  job_id:
+    $ref: ../../Hash.yaml
+  result:
     type: object
-    description: Evidence ratios for different substitution types
     properties:
-      three_hit:
-        type: array
-        description: Evidence ratios for three-hit substitutions
-        items:
-          type: array
-          items:
-            type: number
-      two_hit:
-        type: array
-        description: Evidence ratios for two-hit substitutions
-        items:
-          type: array
-          items:
-            type: number
-      three_hit_islands_vs_2_hit:
-        type: array
-        description: Evidence ratios comparing three-hit islands vs two-hit substitutions
-        items:
-          type: array
-          items:
-            type: number
-  site_substitutions:
-    type: object
-    description: Detailed site substitution mappings
-    additionalProperties:
-      type: object
-      additionalProperties:
+      evidence_ratios:
         type: object
-  analysis:
-    type: object
-    description: Metadata about the analysis
-    properties:
-      authors:
-        type: string
-      contact:
-        type: string
-      info:
-        type: string
-      requirements:
-        type: string
-      version:
-        type: string
-  fits:
-    type: object
-    description: Model fitting information
-    properties:
-      MG94_with_double_and_triple_instantaneous_substitutions:
-        type: object
+        description: Evidence ratios for different substitution types
         properties:
-          AIC_c:
-            type: number
-          Log_Likelihood:
-            type: number
-          Rate_Distributions:
+          three_hit:
+            type: array
+            description: Evidence ratios for three-hit substitutions
+            items:
+              type: array
+              items:
+                type: number
+          two_hit:
+            type: array
+            description: Evidence ratios for two-hit substitutions
+            items:
+              type: array
+              items:
+                type: number
+          three_hit_islands_vs_2_hit:
+            type: array
+            description: Evidence ratios comparing three-hit islands vs two-hit substitutions
+            items:
+              type: array
+              items:
+                type: number
+      site_substitutions:
+        type: object
+        description: Detailed site substitution mappings
+        additionalProperties:
+          type: object
+          additionalProperties:
             type: object
-          display_order:
-            type: integer
-          estimated_parameters:
-            type: integer
-      MG94_with_double_and_triple_instantaneous_substitutions_only_synonymous_islands:
+      analysis:
         type: object
+        description: Metadata about the analysis
         properties:
-          AIC_c:
-            type: number
-          Log_Likelihood:
-            type: number
-          Rate_Distributions:
+          authors:
+            type: string
+          contact:
+            type: string
+          info:
+            type: string
+          requirements:
+            type: string
+          version:
+            type: string
+      fits:
+        type: object
+        description: Model fitting information
+        properties:
+          MG94_with_double_and_triple_instantaneous_substitutions:
             type: object
-          display_order:
-            type: integer
-          estimated_parameters:
-            type: integer
-      MG94_with_double_instantaneous_substitutions:
-        type: object
-        properties:
-          AIC_c:
-            type: number
-          Log_Likelihood:
-            type: number
-          Rate_Distributions:
+            properties:
+              AIC_c:
+                type: number
+              Log_Likelihood:
+                type: number
+              Rate_Distributions:
+                type: object
+              display_order:
+                type: integer
+              estimated_parameters:
+                type: integer
+          MG94_with_double_and_triple_instantaneous_substitutions_only_synonymous_islands:
             type: object
-          display_order:
-            type: integer
-          estimated_parameters:
-            type: integer
-      Nucleotide_GTR:
-        type: object
-        properties:
-          AIC_c:
-            type: number
-          Log_Likelihood:
-            type: number
-          Rate_Distributions:
+            properties:
+              AIC_c:
+                type: number
+              Log_Likelihood:
+                type: number
+              Rate_Distributions:
+                type: object
+              display_order:
+                type: integer
+              estimated_parameters:
+                type: integer
+          MG94_with_double_instantaneous_substitutions:
             type: object
-          display_order:
-            type: integer
-          estimated_parameters:
-            type: integer
-      Standard_MG94:
-        type: object
-        properties:
-          AIC_c:
-            type: number
-          Log_Likelihood:
-            type: number
-          Rate_Distributions:
+            properties:
+              AIC_c:
+                type: number
+              Log_Likelihood:
+                type: number
+              Rate_Distributions:
+                type: object
+              display_order:
+                type: integer
+              estimated_parameters:
+                type: integer
+          Nucleotide_GTR:
             type: object
-          display_order:
-            type: integer
-          estimated_parameters:
-            type: integer
-  test_results:
-    type: object
-    description: Statistical test results comparing different models
-    properties:
-      Double_hit_vs_single_hit:
+            properties:
+              AIC_c:
+                type: number
+              Log_Likelihood:
+                type: number
+              Rate_Distributions:
+                type: object
+              display_order:
+                type: integer
+              estimated_parameters:
+                type: integer
+          Standard_MG94:
+            type: object
+            properties:
+              AIC_c:
+                type: number
+              Log_Likelihood:
+                type: number
+              Rate_Distributions:
+                type: object
+              display_order:
+                type: integer
+              estimated_parameters:
+                type: integer
+      test_results:
         type: object
+        description: Statistical test results comparing different models
         properties:
-          LRT:
-            type: number
-          p_value:
-            type: number
-      Triple_hit_vs_Triple_hit_island:
-        type: object
-        properties:
-          LRT:
-            type: number
-          p_value:
-            type: number
-      Triple_hit_vs_double_hit:
-        type: object
-        properties:
-          LRT:
-            type: number
-          p_value:
-            type: number
-      Triple_hit_vs_single_hit:
-        type: object
-        properties:
-          LRT:
-            type: number
-          p_value:
-            type: number
-      Triple_hit_island_vs_double_hit:
-        type: object
-        properties:
-          LRT:
-            type: number
-          p_value:
-            type: number
+          Double_hit_vs_single_hit:
+            type: object
+            properties:
+              LRT:
+                type: number
+              p_value:
+                type: number
+          Triple_hit_vs_Triple_hit_island:
+            type: object
+            properties:
+              LRT:
+                type: number
+              p_value:
+                type: number
+          Triple_hit_vs_double_hit:
+            type: object
+            properties:
+              LRT:
+                type: number
+              p_value:
+                type: number
+          Triple_hit_vs_single_hit:
+            type: object
+            properties:
+              LRT:
+                type: number
+              p_value:
+                type: number
+          Triple_hit_island_vs_double_hit:
+            type: object
+            properties:
+              LRT:
+                type: number
+              p_value:
+                type: number
