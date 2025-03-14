@@ -1,0 +1,32 @@
+type: object
+properties:
+  alignment:
+    $ref: ../Hash.yaml
+    description: Handle to the alignment
+    required: true
+  genetic_code:
+    $ref: ../GeneticCode.yaml
+    default: "Universal"
+  data_type:
+    type: string
+    enum: ["Nucleotide", "Protein"]
+    default: "Nucleotide"
+    description: The type of data being analyzed
+  run_mode:
+    type: string
+    enum: ["Normal", "Faster"]
+    default: "Normal"
+    description: The optimization mode
+  site_to_site_variation:
+    type: string
+    enum: ["None", "General Discrete", "Beta-Gamma"]
+    default: "None"
+    description: Specifies the model for rate variation among sites
+  rate_classes:
+    type: integer
+    default: 2
+    description: The number of discrete rate classes for rate variation
+  model:
+    type: string
+    default: "JTT"
+    description: The substitution model to use

@@ -1,0 +1,66 @@
+type: object
+properties:
+  job_id:
+    $ref: ../Hash.yaml
+  result:
+    allOf:
+      - $ref: ../method_response/BaseResponse.yaml
+      - type: object
+        properties:
+          baselineScore:
+            type: number
+            description: Baseline score for the analysis
+          potentialBreakpoints:
+            type: integer
+            description: Number of potential breakpoints analyzed
+          singleTreeAICc:
+            type: number
+            description: AICc score for the single tree model
+          timeElapsed:
+            type: integer
+            description: Time elapsed for the analysis in seconds
+          totalModelCount:
+            type: integer
+            description: Total number of models evaluated
+          breakpointData:
+            type: object
+            description: Data for each segment between breakpoints
+            additionalProperties:
+              type: object
+              properties:
+                bps:
+                  type: array
+                  items:
+                    type: array
+                    items:
+                      type: integer
+                  description: Breakpoint positions
+                tree:
+                  type: string
+                  description: Newick tree for this segment
+          improvements:
+            type: object
+            description: Improvement metrics for each breakpoint
+            additionalProperties:
+              type: object
+              properties:
+                breakpoints:
+                  type: array
+                  items:
+                    type: array
+                    items:
+                      type: integer
+                  description: Breakpoint positions
+                deltaAICc:
+                  type: number
+                  description: Change in AICc score
+          siteBreakPointSupport:
+            type: object
+            description: Support values for potential breakpoints at each site
+            additionalProperties:
+              type: number
+          trees:
+            type: object
+            description: Tree data
+            additionalProperties:
+              type: object

@@ -66,6 +66,10 @@ paths:
     $ref: paths/methods/relax/relax-start-job.yaml
   /methods/relax-result:
     $ref: paths/methods/relax/relax-results.yaml
+  /methods/gard-start:
+    $ref: paths/methods/gard/gard-start-job.yaml
+  /methods/gard-result:
+    $ref: paths/methods/gard/gard-results.yaml
   /methods/absrel-result:
     $ref: paths/methods/absrel/absrel-results.yaml
   /datasets:
