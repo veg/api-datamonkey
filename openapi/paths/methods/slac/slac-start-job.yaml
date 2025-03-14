@@ -1,0 +1,35 @@
+post:
+  tags:
+    - Methods
+  summary: Start a SLAC analysis
+  description: |
+    SLAC (Single Likelihood Ancestor Counting) uses a maximum likelihood ancestral state reconstruction
+    and minimum path substitution counting to estimate site-level dS and dN, and applies a simple
+    binomial-based test to test if dS differs from dN. The estimates aggregate information over all branches,
+    so the signal is derived from pervasive diversification or conservation.
+  operationId: startSlacJob
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../../components/schemas/slac/SlacRequest.yaml'
+  responses:
+    '200':
+      description: Job started successfully
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/JobResponse.yaml'
+    '400':
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/Error.yaml'
+    '500':
+      description: Server error
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/Error.yaml'

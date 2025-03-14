@@ -1,0 +1,40 @@
+get:
+  tags:
+    - Methods
+  summary: Get SLAC analysis results
+  description: |
+    Retrieve the results of a previously submitted SLAC (Single Likelihood Ancestor Counting) analysis job.
+    Results include model fitting information, branch attributes, and site-specific dN/dS estimates.
+  operationId: getSlacResults
+  parameters:
+    - name: id
+      in: query
+      description: Job ID
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: SLAC analysis results
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/slac/SlacResult.yaml'
+    '400':
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/Error.yaml'
+    '404':
+      description: Job not found
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/Error.yaml'
+    '500':
+      description: Server error
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/Error.yaml'

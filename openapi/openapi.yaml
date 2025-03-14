@@ -88,6 +88,10 @@ paths:
     $ref: paths/methods/multihit/multihit-start-job.yaml
   /methods/multihit-result:
     $ref: paths/methods/multihit/multihit-results.yaml
+  /methods/slac-start:
+    $ref: paths/methods/slac/slac-start-job.yaml
+  /methods/slac-result:
+    $ref: paths/methods/slac/slac-results.yaml
   /datasets:
     $ref: paths/datasets.yaml
   #/datasets/qc:
