@@ -12,7 +12,7 @@ post:
     Retrieve the results of a previously submitted MULTI-HIT analysis job.
     Results include evidence ratios for different substitution types, site-specific substitutions,
     model fitting information, and statistical test results comparing different models.
-  operationId: getMultihitResults
+  operationId: getMULTIHITJob
   requestBody:
     required: true
     content:

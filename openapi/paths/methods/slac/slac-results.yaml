@@ -11,7 +11,7 @@ post:
   description: |
     Retrieve the results of a previously submitted SLAC (Single Likelihood Ancestor Counting) analysis job.
     Results include model fitting information, branch attributes, and site-specific dN/dS estimates.
-  operationId: getSlacResults
+  operationId: getSLACJob
   requestBody:
     required: true
     content:

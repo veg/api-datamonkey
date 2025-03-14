@@ -12,7 +12,7 @@ post:
     Retrieves the results of a previously submitted Fast Unconstrained Bayesian AppRoximation (FUBAR) job.
     FUBAR uses a Bayesian approach to infer selection pressures at individual sites, providing posterior
     probabilities of positive and negative selection.
-  operationId: getFubarResults
+  operationId: getFUBARJob
   requestBody:
     required: true
     content:

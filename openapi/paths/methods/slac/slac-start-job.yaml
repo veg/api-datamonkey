@@ -13,7 +13,7 @@ post:
     and minimum path substitution counting to estimate site-level dS and dN, and applies a simple
     binomial-based test to test if dS differs from dN. The estimates aggregate information over all branches,
     so the signal is derived from pervasive diversification or conservation.
-  operationId: startSlacJob
+  operationId: startSLACJob
   requestBody:
     required: true
     content:

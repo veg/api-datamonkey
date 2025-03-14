@@ -12,7 +12,7 @@ post:
     MULTI-HIT (Multiple Hit) examines whether or not a codon alignment is better fit by models 
     which permit multiple instantaneous substitutions. It can analyze both double-hit and 
     triple-hit substitutions, with an option to account for synonymous triple-hit substitutions.
-  operationId: startMultihitJob
+  operationId: startMULTIHITJob
   requestBody:
     required: true
     content:
