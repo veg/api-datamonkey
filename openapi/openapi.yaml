@@ -58,6 +58,10 @@ paths:
     $ref: paths/methods/busted/busted-results.yaml
   /methods/absrel-start:
     $ref: paths/methods/absrel/absrel-start-job.yaml
+  /methods/meme-start:
+    $ref: paths/methods/meme/meme-start-job.yaml
+  /methods/meme-result:
+    $ref: paths/methods/meme/meme-results.yaml
   /methods/absrel-result:
     $ref: paths/methods/absrel/absrel-results.yaml
   /datasets:

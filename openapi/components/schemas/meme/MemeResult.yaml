@@ -1,0 +1,72 @@
+type: object
+properties:
+  job_id:
+    $ref: ../Hash.yaml
+  result:
+    allOf:
+      - $ref: ../method_response/BaseResponse.yaml
+      - type: object
+        properties:
+          fits:
+            type: object
+            additionalProperties:
+              type: object
+              properties:
+                AIC-c:
+                  type: number
+                Equilibrium frequencies:
+                  type: array
+                  items:
+                    type: array
+                    items:
+                      type: number
+                Log Likelihood:
+                  type: number
+                Rate Distributions:
+                  type: object
+                display order:
+                  type: number
+                estimated parameters:
+                  type: number
+          branch attributes:
+            type: object
+            properties:
+              # Numeric keys containing branch data (e.g., "0")
+              additionalProperties:
+                type: object
+                additionalProperties:
+                  type: object
+                  properties:
+                    Global MG94xREV:
+                      type: number
+                    Nucleotide GTR:
+                      type: number
+                    original name:
+                      type: string
+              # Attributes metadata
+              attributes:
+                type: object
+                additionalProperties:
+                  type: object
+                  properties:
+                    attribute type:
+                      type: string
+                    display order:
+                      type: integer
+          MLE:
+            type: object
+            properties:
+              headers:
+                type: array
+                items:
+                  type: array
+                  items:
+                    type: string
+              content:
+                type: object
+                additionalProperties:
+                  type: array
+                  items:
+                    type: array
+                    items:
+                      type: number
