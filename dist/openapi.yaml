@@ -608,7 +608,7 @@ paths:
 
         non-synonymous (beta, one per branch set) substitution rates and tests
         beta rates for equality at each site.
-      operationId: startContrastFelJob
+      operationId: startCONTRASTFELJob
       requestBody:
         required: true
         content:
@@ -647,7 +647,7 @@ paths:
         site by estimating site-specific 
 
         synonymous and non-synonymous substitution rates.
-      operationId: getContrastFelResults
+      operationId: getCONTRASTFELJob
       requestBody:
         required: true
         content:
@@ -686,7 +686,7 @@ paths:
         individual sites, providing posterior
 
         probabilities of positive and negative selection.
-      operationId: startFubarJob
+      operationId: startFUBARJob
       requestBody:
         required: true
         content:
@@ -731,7 +731,7 @@ paths:
         individual sites, providing posterior
 
         probabilities of positive and negative selection.
-      operationId: getFubarResults
+      operationId: getFUBARJob
       requestBody:
         required: true
         content:
@@ -771,7 +771,7 @@ paths:
 
         triple-hit substitutions, with an option to account for synonymous
         triple-hit substitutions.
-      operationId: startMultihitJob
+      operationId: startMULTIHITJob
       requestBody:
         required: true
         content:
@@ -816,7 +816,7 @@ paths:
 
         model fitting information, and statistical test results comparing
         different models.
-      operationId: getMultihitResults
+      operationId: getMULTIHITJob
       requestBody:
         required: true
         content:
@@ -858,7 +858,7 @@ paths:
         aggregate information over all branches,
 
         so the signal is derived from pervasive diversification or conservation.
-      operationId: startSlacJob
+      operationId: startSLACJob
       requestBody:
         required: true
         content:
@@ -901,7 +901,7 @@ paths:
 
         Results include model fitting information, branch attributes, and
         site-specific dN/dS estimates.
-      operationId: getSlacResults
+      operationId: getSLACJob
       requestBody:
         required: true
         content:
