@@ -9,12 +9,14 @@ properties:
     description: Handle to the tree file
     required: true
   ci:
-    type: boolean
-    default: false
+    type: string
+    enum: ["Yes", "No"]
+    default: "No"
     description: Compute confidence intervals for estimated rates
   srv:
-    type: boolean
-    default: true
+    type: string
+    enum: ["Yes", "No"]
+    default: "Yes"
     description: Include synonymous rate variation in the model
   resample:
     type: number
