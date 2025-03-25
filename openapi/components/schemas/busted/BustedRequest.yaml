@@ -50,6 +50,7 @@ properties:
     default: 1
     description: The number of initial random guesses to seed rate values optimization
   error_sink:
-    type: boolean
-    default: false
+    type: string
+    enum: ["Yes", "No"]
+    default: "No"
     description: An advanced experimental setting; include a rate class to capture misalignment artifacts

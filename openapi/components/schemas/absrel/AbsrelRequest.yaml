@@ -9,8 +9,9 @@ properties:
     description: Handle to the tree file
     required: true
   srv:
-    type: boolean
-    default: true
+    type: string
+    enum: ["Yes", "No"]
+    default: "Yes"
     description: Include synonymous rate variation in the model
   multiple_hits:
     type: string

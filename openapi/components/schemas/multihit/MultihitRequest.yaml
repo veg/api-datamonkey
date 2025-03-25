@@ -12,9 +12,10 @@ properties:
     description: The genetic code to use for the analysis
     default: "Universal"
   triple_islands:
-    type: boolean
+    type: string
+    enum: ["Yes", "No"]
     description: Toggle for accounting synonymous triple-hit substitutions
-    default: false
+    default: "No"
   rate_classes:
     type: integer
     description: Number of rate classes to use
