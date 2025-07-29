@@ -1,0 +1,17 @@
+type: object
+properties:
+  error:
+    type: string
+    description: Error message
+    example: "Job not found"
+  status:
+    type: integer
+    description: HTTP status code
+    example: 404
+  job_id:
+    allOf:
+      - $ref: ./Hash.yaml
+      - description: The job ID that was not found
+required:
+  - error
+  - status

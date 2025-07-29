@@ -18,7 +18,7 @@ Bundles the definition to the dist folder.
 #### `npm test`
 Validates the definition.
 
-#### `npm build-docs`
+#### `npm run build-docs`
 Builds index.html for hosting OpenAPI Spec documentation.
 
 ## Contribution Guide
