@@ -1,0 +1,17 @@
+type: object
+properties:
+  alignment:
+    $ref: ../Hash.yaml
+    description: Handle to the nucleotide sequence alignment
+    required: true
+  tree:
+    $ref: ../Hash.yaml
+    description: Handle to the rooted phylogenetic tree file
+    required: true
+  genetic_code:
+    $ref: ../GeneticCode.yaml
+    default: "Universal"
+  save_fit:
+    type: boolean
+    default: false
+    description: Save NRM+F model fit to a file

@@ -1,0 +1,74 @@
+type: object
+properties:
+  job_id:
+    $ref: ../Hash.yaml
+  result:
+    allOf:
+      - $ref: ../method_response/BaseResponse.yaml
+      - type: object
+        properties:
+          fits:
+            type: object
+            additionalProperties:
+              type: object
+              properties:
+                AIC-c:
+                  type: number
+                Log Likelihood:
+                  type: number
+                Rate Distributions:
+                  type: array
+                  items:
+                    type: array
+                    items:
+                      type: number
+                display order:
+                  type: number
+                estimated parameters:
+                  type: number
+                Equilibrium frequencies:
+                  type: array
+                  items:
+                    type: array
+                    items:
+                      type: number
+          branch attributes:
+            type: object
+            additionalProperties:
+              type: object
+              additionalProperties:
+                type: object
+                properties:
+                  GTR:
+                    type: number
+                  NREV6:
+                    type: number
+                  NREV12:
+                    type: number
+                  NREV12+F:
+                    type: number
+                  observed frequencies:
+                    type: array
+                    items:
+                      type: number
+                  original name:
+                    type: string
+          test results:
+            type: object
+            additionalProperties:
+              type: object
+              properties:
+                LRT:
+                  type: number
+                p-value:
+                  type: number
+                Corrected P-value:
+                  type: number
+          tested:
+            type: boolean
+          characters:
+            type: array
+            items:
+              type: array
+              items:
+                type: string
