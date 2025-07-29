@@ -1,0 +1,16 @@
+type: object
+properties:
+  alignment:
+    $ref: ../Hash.yaml
+    description: Handle to the protein sequence alignment
+    required: true
+  tree:
+    $ref: ../Hash.yaml
+    description: Handle to the rooted phylogenetic tree file
+    required: true
+  bayes_factor_threshold:
+    type: integer
+    minimum: 1
+    maximum: 1000
+    default: 100
+    description: Bayes Factor threshold for determining significant sites (default 100)

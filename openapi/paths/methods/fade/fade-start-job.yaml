@@ -1,0 +1,42 @@
+parameters:
+  - name: pretty_print
+    in: query
+    description: Pretty print response
+    schema:
+      type: boolean
+post:
+  tags:
+    - FADE
+  summary: Start a FADE job
+  description: >
+    Start a FADE (FUBAR Approach to Directional Evolution) job. FADE is a fast method to test 
+    whether or not a subset of sites in a protein alignment evolve towards a particular residue 
+    along a subset of branches at accelerated rates compared to reference model. FADE uses a 
+    random effects model and latent Dirichlet allocation (LDA) - inspired approximation methods 
+    to allocate sites to rate classes.
+  operationId: startFadeJob
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../../../components/schemas/fade/FadeRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../../../components/schemas/JobStatus.yaml
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: ../../../components/schemas/InvalidDataError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../../../components/schemas/ServerError.yaml

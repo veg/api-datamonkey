@@ -49,6 +49,8 @@ tags:
     description: Examples starting jobs and fetching results for SLAC (Single Likelihood Ancestor Counting) analysis
   - name: NRM
     description: Examples starting jobs and fetching results for NRM (Nucleotide Non-Reversible Model) analysis
+  - name: FADE
+    description: Examples starting jobs and fetching results for FADE (FUBAR Approach to Directional Evolution) analysis
   - name: Codon Aware Alignments
     description: Examples building codon-aware alignments from uploaded data. Somewhere over the rainbow..
   - name: Tree Building
@@ -114,6 +116,10 @@ paths:
     $ref: paths/methods/nrm/nrm-start-job.yaml
   /methods/nrm-result:
     $ref: paths/methods/nrm/nrm-results.yaml
+  /methods/fade-start:
+    $ref: paths/methods/fade/fade-start-job.yaml
+  /methods/fade-result:
+    $ref: paths/methods/fade/fade-results.yaml
   /datasets:
     $ref: paths/datasets.yaml
   #/datasets/qc:
