@@ -1,3 +1,34 @@
+get:
+  tags:
+    - CONTRAST-FEL
+  summary: Get CONTRAST-FEL job result by job ID
+  operationId: getContrastFELJobById
+  parameters:
+    - name: job_id
+      in: query
+      description: Job ID to fetch results for
+      required: true
+      schema:
+        $ref: ../../../components/schemas/Hash.yaml
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../../../components/schemas/contrast-fel/ContrastFelResult.yaml
+    '404':
+      description: Job not found
+      content:
+        application/json:
+          schema:
+            $ref: ../../../components/schemas/NotFoundError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../../../components/schemas/ServerError.yaml
 post:
   tags:
     - CONTRAST-FEL
@@ -20,6 +51,12 @@ post:
         application/json:
           schema:
             $ref: '../../../components/schemas/contrast-fel/ContrastFelResult.yaml'
+    '404':
+      description: Job not found
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/NotFoundError.yaml'
     '500':
       description: Internal Server Error
       content:

@@ -4,6 +4,37 @@ parameters:
     description: Pretty print response
     schema:
       type: boolean
+get:
+  tags:
+    - BUSTED
+  summary: Get a BUSTED job result by job ID
+  operationId: getBUSTEDJobById
+  parameters:
+    - name: job_id
+      in: query
+      description: Job ID to fetch results for
+      required: true
+      schema:
+        $ref: ../../../components/schemas/Hash.yaml
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../../../components/schemas/busted/BustedResult.yaml
+    '404':
+      description: Job not found
+      content:
+        application/json:
+          schema:
+            $ref: ../../../components/schemas/NotFoundError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../../../components/schemas/ServerError.yaml
 post:
   tags:
     - BUSTED
@@ -22,6 +53,12 @@ post:
         application/json:
           schema:
             $ref: ../../../components/schemas/busted/BustedResult.yaml
+    '404':
+      description: Job not found
+      content:
+        application/json:
+          schema:
+            $ref: ../../../components/schemas/NotFoundError.yaml
     '500':
       description: Internal Server Error
       content:
