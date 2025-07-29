@@ -1,0 +1,80 @@
+type: object
+properties:
+  compartments:
+    type: integer
+    description: Number of compartments in the analysis
+  events:
+    type: object
+    description: Migration events between compartments
+    additionalProperties:
+      type: object
+      properties:
+        from:
+          type: string
+          description: Source compartment
+        to:
+          type: string
+          description: Destination compartment
+  leaf-count:
+    type: integer
+    description: Number of leaves in the tree
+  migrations:
+    type: integer
+    description: Number of migration events
+  p-value:
+    type: object
+    description: P-values for compartmentalization tests
+    properties:
+      panmictic:
+        type: number
+        description: P-value for full panmixia test
+      structured:
+        type: number
+        description: P-value for structured test
+  partition-counts:
+    type: object
+    description: Number of sequences in each partition/compartment
+    additionalProperties:
+      type: integer
+  partitions:
+    type: object
+    description: Sequences in each partition/compartment
+    additionalProperties:
+      type: object
+      additionalProperties:
+        type: string
+  replicates:
+    type: integer
+    description: Number of bootstrap replicates used
+  node-migrations:
+    type: object
+    description: Number of migrations at each node
+    additionalProperties:
+      type: integer
+  structured-cutoff:
+    type: integer
+    description: Cutoff value for structured test
+  node-p-value:
+    type: object
+    description: P-values for each node
+    properties:
+      panmictic:
+        type: object
+        additionalProperties:
+          type: number
+      structured:
+        type: object
+        additionalProperties:
+          type: number
+  simulations:
+    type: object
+    description: Simulation results
+    properties:
+      panmictic:
+        type: array
+        items:
+          type: number
+      structured:
+        type: array
+        items:
+          type: number

@@ -51,6 +51,8 @@ tags:
     description: Examples starting jobs and fetching results for NRM (Nucleotide Non-Reversible Model) analysis
   - name: FADE
     description: Examples starting jobs and fetching results for FADE (FUBAR Approach to Directional Evolution) analysis
+  - name: SLATKIN
+    description: Examples starting jobs and fetching results for SLATKIN (Slatkin-Maddison) analysis
   - name: Codon Aware Alignments
     description: Examples building codon-aware alignments from uploaded data. Somewhere over the rainbow..
   - name: Tree Building
@@ -120,6 +122,10 @@ paths:
     $ref: paths/methods/fade/fade-start-job.yaml
   /methods/fade-result:
     $ref: paths/methods/fade/fade-results.yaml
+  /methods/slatkin-start:
+    $ref: paths/methods/slatkin/slatkin-start-job.yaml
+  /methods/slatkin-result:
+    $ref: paths/methods/slatkin/slatkin-results.yaml
   /datasets:
     $ref: paths/datasets.yaml
   #/datasets/qc:

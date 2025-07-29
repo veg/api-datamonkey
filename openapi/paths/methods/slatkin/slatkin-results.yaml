@@ -1,0 +1,67 @@
+parameters:
+  - name: pretty_print
+    in: query
+    description: Pretty print response
+    schema:
+      type: boolean
+get:
+  tags:
+    - SLATKIN
+  summary: Get a Slatkin-Maddison job result by job ID
+  operationId: getSlatkinResultsById
+  parameters:
+    - name: job_id
+      in: query
+      description: Job ID to fetch results for
+      required: true
+      schema:
+        $ref: ../../../components/schemas/Hash.yaml
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../../../components/schemas/slatkin/SlatkinResult.yaml
+    '404':
+      description: Job not found
+      content:
+        application/json:
+          schema:
+            $ref: ../../../components/schemas/NotFoundError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../../../components/schemas/ServerError.yaml
+post:
+  tags:
+    - SLATKIN
+  summary: Get a Slatkin-Maddison job result
+  operationId: getSlatkinResults
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../../components/schemas/slatkin/SlatkinRequest.yaml
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../../../components/schemas/slatkin/SlatkinResult.yaml
+    '404':
+      description: Job not found
+      content:
+        application/json:
+          schema:
+            $ref: ../../../components/schemas/NotFoundError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../../../components/schemas/ServerError.yaml
