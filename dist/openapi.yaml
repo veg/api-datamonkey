@@ -156,6 +156,37 @@ paths:
         description: Pretty print response
         schema:
           type: boolean
+    get:
+      tags:
+        - FEL
+      summary: Get a FEL job result by job ID
+      operationId: getFELJobById
+      parameters:
+        - name: job_id
+          in: query
+          description: Job ID to fetch results for
+          required: true
+          schema:
+            $ref: '#/components/schemas/Hash'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FelResult'
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerError'
     post:
       tags:
         - FEL
@@ -174,6 +205,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FelResult'
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
         '500':
           description: Internal Server Error
           content:
@@ -224,6 +261,37 @@ paths:
         description: Pretty print response
         schema:
           type: boolean
+    get:
+      tags:
+        - BUSTED
+      summary: Get a BUSTED job result by job ID
+      operationId: getBUSTEDJobById
+      parameters:
+        - name: job_id
+          in: query
+          description: Job ID to fetch results for
+          required: true
+          schema:
+            $ref: '#/components/schemas/Hash'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BustedResult'
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerError'
     post:
       tags:
         - BUSTED
@@ -242,6 +310,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BustedResult'
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
         '500':
           description: Internal Server Error
           content:
@@ -292,6 +366,37 @@ paths:
         description: Pretty print response
         schema:
           type: boolean
+    get:
+      tags:
+        - ABSREL
+      summary: Get an ABSREL job result by job ID
+      operationId: getABSRELJobById
+      parameters:
+        - name: job_id
+          in: query
+          description: Job ID to fetch results for
+          required: true
+          schema:
+            $ref: '#/components/schemas/Hash'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AbsrelResult'
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerError'
     post:
       tags:
         - ABSREL
@@ -310,6 +415,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AbsrelResult'
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
         '500':
           description: Internal Server Error
           content:
@@ -360,6 +471,37 @@ paths:
         description: Pretty print response
         schema:
           type: boolean
+    get:
+      tags:
+        - MEME
+      summary: Get a MEME job result by job ID
+      operationId: getMEMEJobById
+      parameters:
+        - name: job_id
+          in: query
+          description: Job ID to fetch results for
+          required: true
+          schema:
+            $ref: '#/components/schemas/Hash'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemeResult'
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerError'
     post:
       tags:
         - MEME
@@ -378,6 +520,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MemeResult'
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
         '500':
           description: Internal Server Error
           content:
@@ -428,6 +576,37 @@ paths:
         description: Pretty print response
         schema:
           type: boolean
+    get:
+      tags:
+        - RELAX
+      summary: Get a RELAX job result by job ID
+      operationId: getRELAXJobById
+      parameters:
+        - name: job_id
+          in: query
+          description: Job ID to fetch results for
+          required: true
+          schema:
+            $ref: '#/components/schemas/Hash'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RelaxResult'
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerError'
     post:
       tags:
         - RELAX
@@ -446,6 +625,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RelaxResult'
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
         '500':
           description: Internal Server Error
           content:
@@ -496,6 +681,37 @@ paths:
         description: Pretty print response
         schema:
           type: boolean
+    get:
+      tags:
+        - GARD
+      summary: Get a GARD job result by job ID
+      operationId: getGARDJobById
+      parameters:
+        - name: job_id
+          in: query
+          description: Job ID to fetch results for
+          required: true
+          schema:
+            $ref: '#/components/schemas/Hash'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GardResult'
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerError'
     post:
       tags:
         - GARD
@@ -514,6 +730,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GardResult'
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
         '500':
           description: Internal Server Error
           content:
@@ -564,6 +786,37 @@ paths:
         description: Pretty print response
         schema:
           type: boolean
+    get:
+      tags:
+        - BGM
+      summary: Get a BGM job result by job ID
+      operationId: getBGMJobById
+      parameters:
+        - name: job_id
+          in: query
+          description: Job ID to fetch results for
+          required: true
+          schema:
+            $ref: '#/components/schemas/Hash'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BgmResult'
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerError'
     post:
       tags:
         - BGM
@@ -582,6 +835,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BgmResult'
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
         '500':
           description: Internal Server Error
           content:
@@ -635,6 +894,37 @@ paths:
               schema:
                 $ref: '#/components/schemas/ServerError'
   /methods/contrast-fel-result:
+    get:
+      tags:
+        - CONTRAST-FEL
+      summary: Get CONTRAST-FEL job result by job ID
+      operationId: getContrastFELJobById
+      parameters:
+        - name: job_id
+          in: query
+          description: Job ID to fetch results for
+          required: true
+          schema:
+            $ref: '#/components/schemas/Hash'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContrastFelResult'
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerError'
     post:
       tags:
         - CONTRAST-FEL
@@ -661,6 +951,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ContrastFelResult'
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
         '500':
           description: Internal Server Error
           content:
@@ -719,6 +1015,37 @@ paths:
         description: Pretty print response
         schema:
           type: boolean
+    get:
+      tags:
+        - FUBAR
+      summary: Get a FUBAR job result by job ID
+      operationId: getFUBARJobById
+      parameters:
+        - name: job_id
+          in: query
+          description: Job ID to fetch results for
+          required: true
+          schema:
+            $ref: '#/components/schemas/Hash'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FubarResult'
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerError'
     post:
       tags:
         - FUBAR
@@ -745,6 +1072,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FubarResult'
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
         '500':
           description: Internal Server Error
           content:
@@ -804,6 +1137,37 @@ paths:
         description: Pretty print response
         schema:
           type: boolean
+    get:
+      tags:
+        - MULTI-HIT
+      summary: Get a MULTI-HIT job result by job ID
+      operationId: getMULTIHITJobById
+      parameters:
+        - name: job_id
+          in: query
+          description: Job ID to fetch results for
+          required: true
+          schema:
+            $ref: '#/components/schemas/Hash'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultihitResult'
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerError'
     post:
       tags:
         - MULTI-HIT
@@ -830,6 +1194,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MultihitResult'
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
         '500':
           description: Internal Server Error
           content:
@@ -891,6 +1261,37 @@ paths:
         description: Pretty print response
         schema:
           type: boolean
+    get:
+      tags:
+        - SLAC
+      summary: Get a SLAC job result by job ID
+      operationId: getSLACJobById
+      parameters:
+        - name: job_id
+          in: query
+          description: Job ID to fetch results for
+          required: true
+          schema:
+            $ref: '#/components/schemas/Hash'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SlacResult'
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerError'
     post:
       tags:
         - SLAC
@@ -915,6 +1316,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SlacResult'
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
         '500':
           description: Internal Server Error
           content:
@@ -1264,6 +1671,24 @@ components:
                           type: array
                           items:
                             type: number
+    NotFoundError:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+          example: Job not found
+        status:
+          type: integer
+          description: HTTP status code
+          example: 404
+        job_id:
+          allOf:
+            - $ref: '#/components/schemas/Hash'
+            - description: The job ID that was not found
+      required:
+        - error
+        - status
     BustedRequest:
       type: object
       properties:
