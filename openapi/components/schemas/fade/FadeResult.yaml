@@ -45,7 +45,8 @@ properties:
             items:
               type: number
         "Rate Distributions":
-          type: [object, "null"]
+          type: object
+          nullable: true
           description: Rate distributions for the model
         "display order":
           type: integer
