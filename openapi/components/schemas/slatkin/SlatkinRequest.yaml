@@ -1,0 +1,43 @@
+type: object
+properties:
+  tree:
+    $ref: ../Hash.yaml
+    description: Handle to the phylogenetic tree file
+    required: true
+  groups:
+    type: integer
+    minimum: 2
+    maximum: 100
+    default: 2
+    description: The number of compartments/groups to test
+  compartment_definitions:
+    type: array
+    description: Array of compartment definitions
+    items:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Description for sequences in this compartment
+        regexp:
+          type: string
+          description: Regular expression to select the branches in this compartment
+      required:
+        - description
+        - regexp
+  replicates:
+    type: integer
+    minimum: 1
+    maximum: 1000000
+    default: 1000
+    description: The number of bootstrap replicates
+  weight:
+    type: number
+    minimum: 0.0
+    maximum: 1.0
+    default: 0.2
+    description: Probability of branch selection for structured permutation [0-1]; 0 = classical Slatkin-Maddison, 1 = fully structured
+  use_bootstrap:
+    type: boolean
+    default: true
+    description: Whether to use bootstrap weights to respect well-supported clades
