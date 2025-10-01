@@ -1,20 +1,23 @@
 type: object
 description: Request parameters for SLAC (Single Likelihood Ancestor Counting) analysis
-required:
-  - alignment_file
-  - genetic_code
 properties:
-  alignment_file:
-    type: string
-    description: Path to the alignment file (e.g., .fasta, .nex, .phy)
+  alignment:
+    $ref: ../Hash.yaml
+    description: Handle to the alignment
+    required: true
+  tree:
+    $ref: ../Hash.yaml
+    description: Handle to the tree file
+    required: true
   genetic_code:
-    type: string
-    description: The genetic code to use for the analysis
+    $ref: ../GeneticCode.yaml
     default: "Universal"
   branches:
-    type: string
-    description: Specify branches to test
-    default: "All"
+    type: array
+    items:
+      type: string
+    default: []
+    description: Branches to include in the analysis. If empty, all branches are included.
   samples:
     type: integer
     description: Number of samples for ancestral reconstruction uncertainty
