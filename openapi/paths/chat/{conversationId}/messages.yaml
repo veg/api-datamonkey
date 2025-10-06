@@ -29,7 +29,7 @@ get:
               messages:
                 type: array
                 items:
-                  $ref: '../../components/schemas/ChatMessage.yaml'
+                  $ref: '../../../components/schemas/ChatMessage.yaml'
     '401':
       description: Unauthorized - Invalid or missing user token
     '403':
@@ -73,7 +73,7 @@ post:
             type: object
             properties:
               message:
-                $ref: '../../components/schemas/ChatMessage.yaml'
+                $ref: '../../../components/schemas/ChatMessage.yaml'
     '401':
       description: Unauthorized - Invalid or missing user token
     '403':

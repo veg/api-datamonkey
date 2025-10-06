@@ -210,7 +210,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../components/schemas/ChatConversation.yaml
+                $ref: '#/components/schemas/ChatConversation'
         '401':
           description: Unauthorized - Invalid or missing user token
         '403':
@@ -269,7 +269,7 @@ paths:
                   messages:
                     type: array
                     items:
-                      $ref: ../../components/schemas/ChatMessage.yaml
+                      $ref: '#/components/schemas/ChatMessage'
         '401':
           description: Unauthorized - Invalid or missing user token
         '403':
@@ -312,7 +312,7 @@ paths:
                 type: object
                 properties:
                   message:
-                    $ref: ../../components/schemas/ChatMessage.yaml
+                    $ref: '#/components/schemas/ChatMessage'
         '401':
           description: Unauthorized - Invalid or missing user token
         '403':
