@@ -24,7 +24,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../components/schemas/ChatConversation.yaml'
+            $ref: '../../components/schemas/ChatConversation.yaml'
     '401':
       description: Unauthorized - Invalid or missing user token
     '403':
