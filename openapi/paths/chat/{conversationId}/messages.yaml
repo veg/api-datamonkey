@@ -1,0 +1,82 @@
+parameters:
+  - name: conversationId
+    in: path
+    required: true
+    description: ID of the conversation
+    schema:
+      type: string
+
+get:
+  summary: Get messages from a conversation
+  operationId: getConversationMessages
+  tags:
+    - Chat
+  parameters:
+    - name: user_token
+      in: header
+      required: true
+      description: Token identifying the user
+      schema:
+        type: string
+  responses:
+    '200':
+      description: List of conversation messages
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              messages:
+                type: array
+                items:
+                  $ref: '../../components/schemas/ChatMessage.yaml'
+    '401':
+      description: Unauthorized - Invalid or missing user token
+    '403':
+      description: Forbidden - User does not own this conversation
+    '404':
+      description: Conversation not found
+
+post:
+  summary: Send a message to the conversation
+  operationId: sendConversationMessage
+  tags:
+    - Chat
+  parameters:
+    - name: user_token
+      in: header
+      required: true
+      description: Token identifying the user
+      schema:
+        type: string
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - message
+          properties:
+            message:
+              type: string
+              description: Message content to send
+            fileId:
+              type: string
+              description: Optional ID of a file to analyze
+  responses:
+    '200':
+      description: AI response
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                $ref: '../../components/schemas/ChatMessage.yaml'
+    '401':
+      description: Unauthorized - Invalid or missing user token
+    '403':
+      description: Forbidden - User does not own this conversation
+    '404':
+      description: Conversation not found

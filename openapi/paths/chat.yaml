@@ -1,0 +1,58 @@
+get:
+  summary: List conversations for the authenticated user
+  operationId: listUserConversations
+  tags:
+    - Chat
+  parameters:
+    - name: user_token
+      in: header
+      required: true
+      description: Token identifying the user
+      schema:
+        type: string
+  responses:
+    '200':
+      description: List of user's conversations
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              conversations:
+                type: array
+                items:
+                  $ref: '../components/schemas/ChatConversation.yaml'
+    '401':
+      description: Unauthorized - Invalid or missing user token
+
+post:
+  summary: Create a new conversation
+  operationId: createConversation
+  tags:
+    - Chat
+  parameters:
+    - name: user_token
+      in: header
+      required: true
+      description: Token identifying the user
+      schema:
+        type: string
+  requestBody:
+    required: false
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            title:
+              type: string
+              description: Optional title for the conversation
+  responses:
+    '201':
+      description: Conversation created
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/ChatConversation.yaml'
+    '401':
+      description: Unauthorized - Invalid or missing user token

@@ -1,0 +1,55 @@
+parameters:
+  - name: conversationId
+    in: path
+    required: true
+    description: ID of the conversation
+    schema:
+      type: string
+
+get:
+  summary: Get a conversation by ID
+  operationId: getConversation
+  tags:
+    - Chat
+  parameters:
+    - name: user_token
+      in: header
+      required: true
+      description: Token identifying the user
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Conversation details
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/ChatConversation.yaml'
+    '401':
+      description: Unauthorized - Invalid or missing user token
+    '403':
+      description: Forbidden - User does not own this conversation
+    '404':
+      description: Conversation not found
+
+delete:
+  summary: Delete a conversation
+  operationId: deleteConversation
+  tags:
+    - Chat
+  parameters:
+    - name: user_token
+      in: header
+      required: true
+      description: Token identifying the user
+      schema:
+        type: string
+  responses:
+    '204':
+      description: Conversation deleted
+    '401':
+      description: Unauthorized - Invalid or missing user token
+    '403':
+      description: Forbidden - User does not own this conversation
+    '404':
+      description: Conversation not found

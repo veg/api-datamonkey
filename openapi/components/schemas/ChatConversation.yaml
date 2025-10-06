@@ -1,0 +1,30 @@
+type: object
+description: A conversation between a user and the AI assistant
+required:
+  - id
+  - user_token
+  - created
+  - updated
+properties:
+  id:
+    type: string
+    description: Unique identifier for the conversation
+  user_token:
+    type: string
+    description: Token identifying the user who owns this conversation
+  title:
+    type: string
+    description: Optional title for the conversation
+  created:
+    type: integer
+    format: int64
+    description: Timestamp when the conversation was created (Unix timestamp in milliseconds)
+  updated:
+    type: integer
+    format: int64
+    description: Timestamp when the conversation was last updated (Unix timestamp in milliseconds)
+  messages:
+    type: array
+    description: List of messages in the conversation
+    items:
+      $ref: './ChatMessage.yaml'

@@ -1,0 +1,19 @@
+type: object
+description: A message in a chat session
+required:
+  - role
+  - content
+properties:
+  role:
+    type: string
+    description: Role of the message sender
+    enum:
+      - user
+      - assistant
+  content:
+    type: string
+    description: Content of the message
+  timestamp:
+    type: integer
+    format: int64
+    description: Timestamp when the message was sent (Unix timestamp in milliseconds)
