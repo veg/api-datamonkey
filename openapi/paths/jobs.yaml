@@ -1,0 +1,63 @@
+parameters:
+  - name: pretty_print
+    in: query
+    description: Pretty print response
+    schema:
+      type: boolean
+get:
+  tags:
+    - Jobs
+  summary: Get a list of jobs
+  description: Get a list of jobs with optional filtering by user token, alignment ID, and/or tree ID
+  operationId: getJobsList
+  parameters:
+    - name: user_token
+      in: query
+      description: Filter jobs by user token
+      schema:
+        type: string
+    - name: alignment_id
+      in: query
+      description: Filter jobs by alignment dataset ID
+      schema:
+        $ref: ../components/schemas/Hash.yaml
+    - name: tree_id
+      in: query
+      description: Filter jobs by tree dataset ID
+      schema:
+        $ref: ../components/schemas/Hash.yaml
+    - name: method
+      in: query
+      description: Filter jobs by HyPhy method
+      schema:
+        type: string
+    - name: status
+      in: query
+      description: Filter jobs by status
+      schema:
+        type: string
+        enum: ["queued", "running", "completed", "error"]
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              jobs:
+                type: array
+                items:
+                  $ref: ../components/schemas/JobStatus.yaml
+    '401':
+      description: Unauthorized - Invalid or missing user token
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/UnauthorizedError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ServerError.yaml

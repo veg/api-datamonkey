@@ -1,0 +1,50 @@
+parameters:
+  - name: datasetId
+    in: path
+    description: ID of the dataset to retrieve
+    required: true
+    schema:
+      $ref: ../../components/schemas/Hash.yaml
+  - name: pretty_print
+    in: query
+    description: Pretty print response
+    schema:
+      type: boolean
+get:
+  tags:
+    - File Upload and QC
+  summary: Get details for a specific dataset
+  description: Get detailed information about a specific dataset
+  operationId: getDatasetById
+  parameters:
+    - name: user_token
+      in: header
+      required: false
+      description: Token identifying the user (required if dataset is private)
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/dataset/Dataset.yaml
+    '401':
+      description: Unauthorized - Invalid or missing user token for private dataset
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/UnauthorizedError.yaml
+    '404':
+      description: Dataset not found
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/NotFoundError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/ServerError.yaml
