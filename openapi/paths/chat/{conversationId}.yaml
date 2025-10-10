@@ -27,10 +27,22 @@ get:
             $ref: '../../components/schemas/ChatConversation.yaml'
     '401':
       description: Unauthorized - Invalid or missing user token
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/UnauthorizedError.yaml'
     '403':
       description: Forbidden - User does not own this conversation
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ForbiddenError.yaml'
     '404':
       description: Conversation not found
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/NotFoundError.yaml'
 
 delete:
   summary: Delete a conversation
@@ -49,7 +61,19 @@ delete:
       description: Conversation deleted
     '401':
       description: Unauthorized - Invalid or missing user token
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/UnauthorizedError.yaml'
     '403':
       description: Forbidden - User does not own this conversation
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ForbiddenError.yaml'
     '404':
       description: Conversation not found
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/NotFoundError.yaml'

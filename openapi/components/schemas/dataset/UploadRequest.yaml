@@ -2,6 +2,9 @@ type: object
 properties:
   meta:
     $ref: ./DatasetMeta.yaml
+  user_token:
+    type: string
+    description: Token identifying the user who is uploading the dataset
   file:
     type: string
     format: binary

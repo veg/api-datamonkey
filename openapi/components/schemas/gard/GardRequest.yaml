@@ -1,8 +1,11 @@
 type: object
 properties:
+  user_token:
+    type: string
+    description: Token identifying the user who is starting the job
   alignment:
     $ref: ../Hash.yaml
-    description: Handle to the alignment
+    description: Dataset ID of the alignment
     required: true
   genetic_code:
     $ref: ../GeneticCode.yaml

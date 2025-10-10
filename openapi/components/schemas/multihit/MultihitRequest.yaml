@@ -1,12 +1,15 @@
 type: object
 description: Request parameters for MULTI-HIT analysis
 required:
-  - alignment_file
+  - alignment
   - genetic_code
 properties:
-  alignment_file:
+  user_token:
     type: string
-    description: Path to the alignment file (e.g., .fasta, .phy)
+    description: Token identifying the user who is starting the job
+  alignment:
+    $ref: ../Hash.yaml
+    description: Dataset ID of the alignment
   genetic_code:
     type: string
     description: The genetic code to use for the analysis

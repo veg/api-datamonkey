@@ -1,12 +1,15 @@
 type: object
 properties:
+  user_token:
+    type: string
+    description: Token identifying the user who is starting the job
   alignment:
     $ref: ../Hash.yaml
-    description: Handle to the protein sequence alignment
+    description: Dataset ID of the protein sequence alignment
     required: true
   tree:
     $ref: ../Hash.yaml
-    description: Handle to the rooted phylogenetic tree file
+    description: Dataset ID of the rooted phylogenetic tree file
     required: true
   bayes_factor_threshold:
     type: integer
