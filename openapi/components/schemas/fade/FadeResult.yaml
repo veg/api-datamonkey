@@ -1,118 +1,86 @@
 type: object
 properties:
-  analysis:
-    type: object
-    description: Metadata about the FADE analysis
-    properties:
-      info:
-        type: string
-        description: Description of the FADE method
-      version:
-        type: string
-        description: Version of the FADE method
-      citation:
-        type: string
-        description: Citation for the FADE method
-      authors:
-        type: string
-        description: Authors of the FADE method
-      contact:
-        type: string
-        description: Contact information for the FADE method
-      requirements:
-        type: string
-        description: Requirements for the FADE method
-  fits:
-    type: object
-    description: Model fit information
-    additionalProperties:
-      type: object
-      properties:
-        "Log Likelihood":
-          type: number
-          description: Log likelihood of the model fit
-        "estimated parameters":
-          type: integer
-          description: Number of estimated parameters
-        "AIC-c":
-          type: number
-          description: AIC-c score for the model
-        "Equilibrium frequencies":
-          type: array
-          description: Equilibrium frequencies for the model
-          items:
-            type: array
-            items:
-              type: number
-        "Rate Distributions":
-          type: object
-          nullable: true
-          description: Rate distributions for the model
-        "display order":
-          type: integer
-          description: Display order for the model
-  MLE:
-    type: object
-    description: Maximum likelihood estimates
-    properties:
-      content:
-        type: object
-        description: MLE content organized by amino acid and partition
-        additionalProperties:
-          type: object
-          additionalProperties:
-            type: array
-            description: Site-specific data arrays
-            items:
-              type: array
-              description: "[rate, bias, Prob[bias>0], BayesFactor[bias>0]]"
-              items:
-                type: number
-  "site annotations":
-    type: object
-    description: Annotations for each site
-    properties:
-      "site annotations":
-        type: object
-        description: Site annotations by partition
-        additionalProperties:
-          type: object
-          additionalProperties:
-            type: array
-            description: "[composition, substitutions]"
-            items:
-              type: string
-  timers:
-    type: object
-    description: Execution time information
-    additionalProperties:
-      type: object
-      properties:
-        timer:
-          type: integer
-          description: Execution time in milliseconds
-        order:
-          type: integer
-          description: Order of execution
-  input:
-    type: object
-    description: Input data information
-    properties:
-      file:
-        type: string
-        description: Input file path
-      sequences:
-        type: integer
-        description: Number of sequences in the alignment
-      sites:
-        type: integer
-        description: Number of sites in the alignment
-      partition_count:
-        type: integer
-        description: Number of partitions in the analysis
-  tested:
-    type: object
-    description: Information about tested branches
-    additionalProperties:
-      type: string
-      description: Branch classification
+  job_id:
+    $ref: ../Hash.yaml
+  result:
+    allOf:
+      - $ref: ../method_response/BaseResponse.yaml
+      - type: object
+        properties:
+          fits:
+            type: object
+            description: Model fit information
+            additionalProperties:
+              type: object
+              properties:
+                "Log Likelihood":
+                  type: number
+                  description: Log likelihood of the model fit
+                "estimated parameters":
+                  type: integer
+                  description: Number of estimated parameters
+                "AIC-c":
+                  type: number
+                  description: AIC-c score for the model
+                "Equilibrium frequencies":
+                  type: array
+                  description: Equilibrium frequencies for the model
+                  items:
+                    type: array
+                    items:
+                      type: number
+                "Rate Distributions":
+                  type: object
+                  nullable: true
+                "display order":
+                  type: integer
+                  description: Display order for the model
+          MLE:
+            type: object
+            description: Maximum likelihood estimates
+            properties:
+              headers:
+                type: array
+                description: Column headers for the MLE data
+                items:
+                  type: array
+                  items:
+                    type: string
+              content:
+                type: object
+                description: MLE content organized by amino acid and partition
+                additionalProperties:
+                  type: object
+                  additionalProperties:
+                    type: array
+                    description: Site-specific data arrays
+                    items:
+                      type: array
+                      description: "[rate, bias, Prob[bias>0], BayesFactor[bias>0]]"
+                      items:
+                        type: number
+          "site annotations":
+            type: object
+            description: Annotations for each site
+            properties:
+              headers:
+                type: object
+                description: Headers for the site annotations
+                properties:
+                  Composition:
+                    type: string
+                    description: Description of amino acid composition
+                  Substitutions:
+                    type: string
+                    description: Description of substitution history
+              "site annotations":
+                type: object
+                description: Site annotations by partition
+                additionalProperties:
+                  type: array
+                  description: Site-specific annotations
+                  items:
+                    type: array
+                    description: "[composition, substitutions]"
+                    items:
+                      type: string
