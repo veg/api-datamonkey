@@ -1,0 +1,25 @@
+parameters:
+  - name: pretty_print
+    in: query
+    description: Pretty print response
+    schema:
+      type: boolean
+get:
+  tags:
+    - Methods
+  summary: Get a list of available HyPhy methods
+  description: Returns a list of all available HyPhy methods that can be run on the server
+  operationId: getMethodsList
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/methods/MethodsList.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ServerError.yaml
