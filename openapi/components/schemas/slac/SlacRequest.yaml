@@ -1,13 +1,16 @@
 type: object
 description: Request parameters for SLAC (Single Likelihood Ancestor Counting) analysis
 properties:
+  user_token:
+    type: string
+    description: Token identifying the user who is starting the job
   alignment:
     $ref: ../Hash.yaml
-    description: Handle to the alignment
+    description: Dataset ID of the alignment
     required: true
   tree:
     $ref: ../Hash.yaml
-    description: Handle to the tree file
+    description: Dataset ID of the tree file
     required: true
   genetic_code:
     $ref: ../GeneticCode.yaml

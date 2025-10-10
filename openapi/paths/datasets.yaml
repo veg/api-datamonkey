@@ -8,7 +8,14 @@ get:
   tags:
     - File Upload and QC
   summary: Get a list of datasets uploaded to Datamonkey
+  description: Get a list of datasets with optional filtering by user token
   operationId: getDatasetsList
+  parameters:
+    - name: user_token
+      in: query
+      description: Filter datasets by user token
+      schema:
+        type: string
   responses:
     '200':
       description: Success
@@ -16,11 +23,24 @@ get:
         application/json:
           schema:
             $ref: ../components/schemas/dataset/Datasets.yaml
+    '401':
+      description: Unauthorized - Invalid user token
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/UnauthorizedError.yaml
 post:
   tags:
     - File Upload and QC
   summary: Upload a dataset to Datamonkey
   operationId: PostDataset
+  parameters:
+    - name: user_token
+      in: header
+      required: true
+      description: Token identifying the user
+      schema:
+        type: string
   requestBody:
     content:
       multipart/form-data:
@@ -34,6 +54,12 @@ post:
         application/json:
           schema:
             $ref: ../components/schemas/dataset/Datasets.yaml
+    '401':
+      description: Unauthorized - Invalid or missing user token
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/UnauthorizedError.yaml
     '422':
       description: Unprocessable Entity
       content:

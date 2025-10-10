@@ -13,6 +13,13 @@ post:
     which permit multiple instantaneous substitutions. It can analyze both double-hit and 
     triple-hit substitutions, with an option to account for synonymous triple-hit substitutions.
   operationId: startMULTIHITJob
+  parameters:
+    - name: user_token
+      in: header
+      required: true
+      description: Token identifying the user
+      schema:
+        type: string
   requestBody:
     required: true
     content:
@@ -26,6 +33,12 @@ post:
         application/json:
           schema:
             $ref: '../../../components/schemas/JobStatus.yaml'
+    '401':
+      description: Unauthorized - Invalid or missing user token
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/UnauthorizedError.yaml'
     '422':
       description: Unprocessable Entity
       content:

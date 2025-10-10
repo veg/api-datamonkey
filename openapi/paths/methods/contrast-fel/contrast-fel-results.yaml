@@ -10,6 +10,12 @@ get:
       required: true
       schema:
         $ref: ../../../components/schemas/Hash.yaml
+    - name: user_token
+      in: header
+      required: false
+      description: Token identifying the user (required for private jobs)
+      schema:
+        type: string
   responses:
     '200':
       description: Success
@@ -17,6 +23,18 @@ get:
         application/json:
           schema:
             $ref: ../../../components/schemas/contrast-fel/ContrastFelResult.yaml
+    '401':
+      description: Unauthorized - Invalid user token
+      content:
+        application/json:
+          schema:
+            $ref: ../../../components/schemas/UnauthorizedError.yaml
+    '403':
+      description: Forbidden - User does not have permission to access this job
+      content:
+        application/json:
+          schema:
+            $ref: ../../../components/schemas/ForbiddenError.yaml
     '404':
       description: Job not found
       content:
@@ -38,6 +56,13 @@ post:
     selective pressures differ between two or more sets of branches at a site by estimating site-specific 
     synonymous and non-synonymous substitution rates.
   operationId: getCONTRASTFELJob
+  parameters:
+    - name: user_token
+      in: header
+      required: false
+      description: Token identifying the user (required for private jobs)
+      schema:
+        type: string
   requestBody:
     required: true
     content:
@@ -51,6 +76,18 @@ post:
         application/json:
           schema:
             $ref: '../../../components/schemas/contrast-fel/ContrastFelResult.yaml'
+    '401':
+      description: Unauthorized - Invalid user token
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/UnauthorizedError.yaml'
+    '403':
+      description: Forbidden - User does not have permission to access this job
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/ForbiddenError.yaml'
     '404':
       description: Job not found
       content:

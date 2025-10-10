@@ -24,6 +24,10 @@ get:
                   $ref: '../components/schemas/ChatConversation.yaml'
     '401':
       description: Unauthorized - Invalid or missing user token
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/UnauthorizedError.yaml'
 
 post:
   summary: Create a new conversation
@@ -56,3 +60,7 @@ post:
             $ref: '../components/schemas/ChatConversation.yaml'
     '401':
       description: Unauthorized - Invalid or missing user token
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/UnauthorizedError.yaml'

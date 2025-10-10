@@ -1,6 +1,6 @@
 openapi: 3.0.2
 info:
-  version: 1.1.0
+  version: 1.2.0
   title: Datamonkey API
   contact:
     email: spond@temple.edu
@@ -27,6 +27,10 @@ tags:
     description: Chat with an AI assistant to analyze data and run HyPhy methods
   - name: File Upload and QC
     description: Examples uploading files to Datamonkey
+  - name: Jobs
+    description: Manage analysis jobs
+  - name: Methods
+    description: List and manage available HyPhy methods
   - name: FEL
     description: Examples starting jobs and fetching results for FEL
   - name: BUSTED
@@ -78,6 +82,14 @@ paths:
     $ref: paths/chat/{conversationId}.yaml
   '/chat/{conversationId}/messages':
     $ref: paths/chat/{conversationId}/messages.yaml
+  /jobs:
+    $ref: paths/jobs.yaml
+  /datasets:
+    $ref: paths/datasets.yaml
+  '/datasets/{datasetId}':
+    $ref: paths/datasets/{datasetId}.yaml
+  /methods:
+    $ref: paths/methods.yaml
   /methods/fel-start:
     $ref: paths/methods/fel/fel-start-job.yaml
   /methods/fel-result:
@@ -134,8 +146,6 @@ paths:
     $ref: paths/methods/slatkin/slatkin-start-job.yaml
   /methods/slatkin-result:
     $ref: paths/methods/slatkin/slatkin-results.yaml
-  /datasets:
-    $ref: paths/datasets.yaml
   #/datasets/qc:
   #  $ref: paths/datasets/qc.yaml
   #'/align/{aligner}':

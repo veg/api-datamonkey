@@ -3,12 +3,15 @@ required:
   - alignment
   - tree
 properties:
+  user_token:
+    type: string
+    description: Token identifying the user who is starting the job
   alignment:
-    type: string
-    description: Path to the in-frame codon alignment file (e.g., .fasta, .nex)
+    $ref: ../Hash.yaml
+    description: Dataset ID of the alignment
   tree:
-    type: string
-    description: Path to the phylogenetic tree file
+    $ref: ../Hash.yaml
+    description: Dataset ID of the tree file
   genetic_code:
     type: string
     description: Which genetic code should be used

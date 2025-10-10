@@ -1,8 +1,11 @@
 type: object
 properties:
+  user_token:
+    type: string
+    description: Token identifying the user who is starting the job
   tree:
     $ref: ../Hash.yaml
-    description: Handle to the phylogenetic tree file
+    description: Dataset ID of the phylogenetic tree file
     required: true
   groups:
     type: integer

@@ -4,12 +4,15 @@ required:
   - tree
   - branch_sets
 properties:
+  user_token:
+    type: string
+    description: Token identifying the user who is starting the job
   alignment:
-    type: string
-    description: Path to the in-frame codon alignment file (e.g., .fasta, .phy)
+    $ref: ../Hash.yaml
+    description: Dataset ID of the alignment
   tree:
-    type: string
-    description: Path to the phylogenetic tree file
+    $ref: ../Hash.yaml
+    description: Dataset ID of the tree file
   branch_sets:
     type: array
     description: Array of branch sets to be used for comparison (e.g., "Source" and "Test" groups)

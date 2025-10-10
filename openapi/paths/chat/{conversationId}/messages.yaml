@@ -32,10 +32,22 @@ get:
                   $ref: '../../../components/schemas/ChatMessage.yaml'
     '401':
       description: Unauthorized - Invalid or missing user token
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/UnauthorizedError.yaml'
     '403':
       description: Forbidden - User does not own this conversation
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/ForbiddenError.yaml'
     '404':
       description: Conversation not found
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/NotFoundError.yaml'
 
 post:
   summary: Send a message to the conversation
@@ -73,7 +85,19 @@ post:
                 $ref: '../../../components/schemas/ChatMessage.yaml'
     '401':
       description: Unauthorized - Invalid or missing user token
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/UnauthorizedError.yaml'
     '403':
       description: Forbidden - User does not own this conversation
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/ForbiddenError.yaml'
     '404':
       description: Conversation not found
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/NotFoundError.yaml'
