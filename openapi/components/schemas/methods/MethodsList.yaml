@@ -1,0 +1,49 @@
+type: object
+properties:
+  methods:
+    type: array
+    description: List of available HyPhy methods
+    items:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Method identifier (e.g., "fel", "busted", "absrel")
+        name:
+          type: string
+          description: Human-readable name of the method
+        description:
+          type: string
+          description: Brief description of what the method does
+        status:
+          type: string
+          description: Current status of the method
+          enum: ["available", "beta", "deprecated"]
+          default: "available"
+        start_endpoint:
+          type: string
+          description: API endpoint to start a job for this method
+        result_endpoint:
+          type: string
+          description: API endpoint to retrieve results for this method
+        parameters:
+          type: array
+          description: List of parameters expected by this method
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Parameter name
+              description:
+                type: string
+                description: Description of the parameter
+              required:
+                type: boolean
+                description: Whether the parameter is required
+              type:
+                type: string
+                description: Data type of the parameter
+              default:
+                type: string
+                description: Default value of the parameter (if any)
