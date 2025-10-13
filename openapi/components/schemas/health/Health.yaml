@@ -6,7 +6,15 @@ properties:
     type: object
     optional: true
     properties:
-      slurm:
+      job_scheduler:
         $ref: './Status.yaml'
+        description: Health status of the job scheduler (e.g., SLURM, PBS, etc.)
       datamonkey:
         $ref: './Status.yaml'
+        description: Health status of the Datamonkey API service
+      llm:
+        $ref: './Status.yaml'
+        description: Health status of the Language Learning Model service
+      database:
+        $ref: './Status.yaml'
+        description: Health status of the database

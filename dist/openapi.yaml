@@ -2836,10 +2836,18 @@ components:
           type: object
           optional: true
           properties:
-            slurm:
+            job_scheduler:
               $ref: '#/components/schemas/Status'
+              description: 'Health status of the job scheduler (e.g., SLURM, PBS, etc.)'
             datamonkey:
               $ref: '#/components/schemas/Status'
+              description: Health status of the Datamonkey API service
+            llm:
+              $ref: '#/components/schemas/Status'
+              description: Health status of the Language Learning Model service
+            database:
+              $ref: '#/components/schemas/Status'
+              description: Health status of the database
     ChatMessage:
       type: object
       description: A message in a chat session
