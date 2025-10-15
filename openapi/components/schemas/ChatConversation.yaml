@@ -2,16 +2,12 @@ type: object
 description: A conversation between a user and the AI assistant
 required:
   - id
-  - user_token
   - created
   - updated
 properties:
   id:
     type: string
     description: Unique identifier for the conversation
-  user_token:
-    type: string
-    description: Token identifying the user who owns this conversation
   title:
     type: string
     description: Optional title for the conversation

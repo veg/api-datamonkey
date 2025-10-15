@@ -8,9 +8,6 @@ properties:
   tree_id:
     $ref: ./Hash.yaml
     description: ID of the tree dataset associated with this job
-  user_token:
-    type: string
-    description: Token identifying the user who owns this job
   status:
     type: string
     enum: ["queued", "running", "completed", "error"]
