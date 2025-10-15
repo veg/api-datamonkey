@@ -446,6 +446,105 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ServerError'
+  '/jobs/{jobId}':
+    parameters:
+      - name: jobId
+        in: path
+        description: ID of the job
+        required: true
+        schema:
+          $ref: '#/components/schemas/Hash'
+      - name: pretty_print
+        in: query
+        description: Pretty print response
+        schema:
+          type: boolean
+    get:
+      tags:
+        - Jobs
+      summary: Get details for a specific job
+      description: Get detailed information about a specific job
+      operationId: getJobById
+      parameters:
+        - name: user_token
+          in: header
+          required: false
+          description: Token identifying the user (required if job is private)
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatus'
+        '401':
+          description: Unauthorized - Invalid or missing user token for private job
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+        '403':
+          description: Forbidden - User does not own this job
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerError'
+    delete:
+      tags:
+        - Jobs
+      summary: Delete a job
+      description: >-
+        Delete a job from the Datamonkey server. If the job is running, it will
+        be cancelled.
+      operationId: deleteJob
+      parameters:
+        - name: user_token
+          in: header
+          required: true
+          description: Token identifying the user who owns the job
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Job deleted successfully
+        '401':
+          description: Unauthorized - Invalid or missing user token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+        '403':
+          description: Forbidden - User does not own this job
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerError'
   /datasets:
     parameters:
       - name: pretty_print
@@ -560,6 +659,46 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnauthorizedError'
+        '404':
+          description: Dataset not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerError'
+    delete:
+      tags:
+        - File Upload and QC
+      summary: Delete a dataset
+      description: Delete a dataset from the Datamonkey server
+      operationId: deleteDataset
+      parameters:
+        - name: user_token
+          in: header
+          required: true
+          description: Token identifying the user who owns the dataset
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Dataset deleted successfully
+        '401':
+          description: Unauthorized - Invalid or missing user token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+        '403':
+          description: Forbidden - User does not own this dataset
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
         '404':
           description: Dataset not found
           content:

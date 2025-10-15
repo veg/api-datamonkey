@@ -84,6 +84,8 @@ paths:
     $ref: paths/chat/{conversationId}/messages.yaml
   /jobs:
     $ref: paths/jobs.yaml
+  '/jobs/{jobId}':
+    $ref: paths/jobs/{jobId}.yaml
   /datasets:
     $ref: paths/datasets.yaml
   '/datasets/{datasetId}':
