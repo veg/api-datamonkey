@@ -37,8 +37,8 @@ post:
   parameters:
     - name: user_token
       in: header
-      required: true
-      description: Token identifying the user
+      required: false
+      description: Token identifying the user. If not provided, a new session will be created automatically.
       schema:
         type: string
   requestBody:
@@ -49,17 +49,14 @@ post:
     required: true
   responses:
     '201':
-      description: Success
+      description: Dataset uploaded successfully. If no token was provided, a new session token is returned in the X-Session-Token response header.
+      headers:
+        X-Session-Token:
+          $ref: ../components/headers/XSessionToken.yaml
       content:
         application/json:
           schema:
             $ref: ../components/schemas/dataset/Datasets.yaml
-    '401':
-      description: Unauthorized - Invalid or missing user token
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/UnauthorizedError.yaml
     '422':
       description: Unprocessable Entity
       content:

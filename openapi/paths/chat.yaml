@@ -37,8 +37,8 @@ post:
   parameters:
     - name: user_token
       in: header
-      required: true
-      description: Token identifying the user
+      required: false
+      description: Token identifying the user. If not provided, a new session will be created automatically.
       schema:
         type: string
   requestBody:
@@ -53,14 +53,17 @@ post:
               description: Optional title for the conversation
   responses:
     '201':
-      description: Conversation created
+      description: Conversation created successfully. If no token was provided, a new session token is returned in the X-Session-Token response header.
+      headers:
+        X-Session-Token:
+          $ref: '../components/headers/XSessionToken.yaml'
       content:
         application/json:
           schema:
             $ref: '../components/schemas/ChatConversation.yaml'
-    '401':
-      description: Unauthorized - Invalid or missing user token
+    '500':
+      description: Internal Server Error - Failed to create session or conversation
       content:
         application/json:
           schema:
-            $ref: '../components/schemas/UnauthorizedError.yaml'
+            $ref: '../components/schemas/ServerError.yaml'
