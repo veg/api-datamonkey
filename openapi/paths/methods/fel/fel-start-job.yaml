@@ -12,8 +12,8 @@ post:
   parameters:
     - name: user_token
       in: header
-      required: true
-      description: Token identifying the user
+      required: false
+      description: Token identifying the user. If not provided, a new session will be created automatically.
       schema:
         type: string
   requestBody:
@@ -24,19 +24,28 @@ post:
           $ref: ../../../components/schemas/fel/FelRequest.yaml
   responses:
     '200':
-      description: Success
+      description: Job started successfully. If no token was provided, a new session token is returned in the X-Session-Token response header.
+      headers:
+        X-Session-Token:
+          $ref: ../../../components/headers/XSessionToken.yaml
       content:
         application/json:
           schema:
             $ref: ../../../components/schemas/JobStatus.yaml
-    '401':
-      description: Unauthorized - Invalid or missing user token
+    '403':
+      description: Forbidden - User does not have access to the specified dataset(s)
       content:
         application/json:
           schema:
-            $ref: ../../../components/schemas/UnauthorizedError.yaml
+            $ref: ../../../components/schemas/ForbiddenError.yaml
+    '404':
+      description: Not Found - Specified dataset(s) not found
+      content:
+        application/json:
+          schema:
+            $ref: ../../../components/schemas/NotFoundError.yaml
     '422':
-      description: Unprocessable Entity
+      description: Unprocessable Entity - Invalid request parameters
       content:
         application/json:
           schema:

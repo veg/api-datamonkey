@@ -18,8 +18,8 @@ get:
         $ref: ../../../components/schemas/Hash.yaml
     - name: user_token
       in: header
-      required: false
-      description: Token identifying the user (required for private jobs)
+      required: true
+      description: Token identifying the user
       schema:
         type: string
   responses:
@@ -61,8 +61,8 @@ post:
   parameters:
     - name: user_token
       in: header
-      required: false
-      description: Token identifying the user (required for private jobs)
+      required: true
+      description: Token identifying the user
       schema:
         type: string
   requestBody:
