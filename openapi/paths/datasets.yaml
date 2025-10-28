@@ -7,24 +7,25 @@ parameters:
 get:
   tags:
     - File Upload and QC
-  summary: Get a list of datasets uploaded to Datamonkey
-  description: Get a list of datasets with optional filtering by user token
+  summary: Get a list of datasets for the authenticated user
+  description: Returns datasets owned by the authenticated user
   operationId: getDatasetsList
   parameters:
     - name: user_token
-      in: query
-      description: Filter datasets by user token
+      in: header
+      required: true
+      description: Token identifying the user
       schema:
         type: string
   responses:
     '200':
-      description: Success
+      description: Success - returns user's datasets
       content:
         application/json:
           schema:
             $ref: ../components/schemas/dataset/Datasets.yaml
     '401':
-      description: Unauthorized - Invalid user token
+      description: Unauthorized - Invalid or missing user token
       content:
         application/json:
           schema:
