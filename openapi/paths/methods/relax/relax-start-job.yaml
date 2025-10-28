@@ -12,8 +12,8 @@ post:
   parameters:
     - name: user_token
       in: header
-      required: false
-      description: Token identifying the user. If not provided, a new session will be created automatically.
+      required: true
+      description: Token identifying the user. Required to reference datasets owned by the user.
       schema:
         type: string
   requestBody:
@@ -24,14 +24,17 @@ post:
           $ref: ../../../components/schemas/relax/RelaxRequest.yaml
   responses:
     '200':
-      description: Job started successfully. If no token was provided, a new session token is returned in the X-Session-Token response header.
-      headers:
-        X-Session-Token:
-          $ref: ../../../components/headers/XSessionToken.yaml
+      description: Job started successfully.
       content:
         application/json:
           schema:
             $ref: ../../../components/schemas/JobStatus.yaml
+    '401':
+      description: Unauthorized - Invalid or missing user token
+      content:
+        application/json:
+          schema:
+            $ref: ../../../components/schemas/UnauthorizedError.yaml
     '403':
       description: Forbidden - User does not have access to the specified dataset(s)
       content:
