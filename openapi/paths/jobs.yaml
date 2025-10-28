@@ -7,13 +7,14 @@ parameters:
 get:
   tags:
     - Jobs
-  summary: Get a list of jobs
-  description: Get a list of jobs with optional filtering by user token, alignment ID, and/or tree ID
+  summary: Get a list of jobs for the authenticated user
+  description: Returns jobs owned by the authenticated user, with optional filtering by alignment ID, tree ID, method, and/or status
   operationId: getJobsList
   parameters:
     - name: user_token
-      in: query
-      description: Filter jobs by user token
+      in: header
+      required: true
+      description: Token identifying the user
       schema:
         type: string
     - name: alignment_id
@@ -39,7 +40,7 @@ get:
         enum: ["queued", "running", "completed", "error"]
   responses:
     '200':
-      description: Success
+      description: Success - returns user's jobs
       content:
         application/json:
           schema:
