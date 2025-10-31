@@ -14,3 +14,10 @@ allOf:
       updated:
         type: string
         format: date-time
+      content:
+        type: string
+        description: |
+          The actual dataset content (sequence data).
+          Only included when `include_content=true` query parameter is used.
+          For FASTA files, this will be the raw FASTA format text.
+        example: ">seq1\nATGCATGCATGCATGC\n>seq2\nATGCATGCATGCATGT"

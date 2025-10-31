@@ -14,7 +14,10 @@ get:
   tags:
     - File Upload and QC
   summary: Get details for a specific dataset
-  description: Get detailed information about a specific dataset
+  description: |
+    Get detailed information about a specific dataset.
+    By default, returns metadata only (id, name, type, description, timestamps).
+    Use `include_content=true` query parameter to include the actual sequence data.
   operationId: getDatasetById
   parameters:
     - name: user_token
@@ -23,6 +26,16 @@ get:
       description: Token identifying the user (required if dataset is private)
       schema:
         type: string
+    - name: include_content
+      in: query
+      required: false
+      description: |
+        If true, includes the dataset content (sequence data) in the response.
+        Default is false (metadata only) for better performance.
+      schema:
+        type: boolean
+        default: false
+      example: true
   responses:
     '200':
       description: Success

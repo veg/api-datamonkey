@@ -647,7 +647,14 @@ paths:
       tags:
         - File Upload and QC
       summary: Get details for a specific dataset
-      description: Get detailed information about a specific dataset
+      description: >
+        Get detailed information about a specific dataset.
+
+        By default, returns metadata only (id, name, type, description,
+        timestamps).
+
+        Use `include_content=true` query parameter to include the actual
+        sequence data.
       operationId: getDatasetById
       parameters:
         - name: user_token
@@ -656,6 +663,18 @@ paths:
           description: Token identifying the user (required if dataset is private)
           schema:
             type: string
+        - name: include_content
+          in: query
+          required: false
+          description: >
+            If true, includes the dataset content (sequence data) in the
+            response.
+
+            Default is false (metadata only) for better performance.
+          schema:
+            type: boolean
+            default: false
+          example: true
       responses:
         '200':
           description: Success
@@ -3352,6 +3371,20 @@ components:
             updated:
               type: string
               format: date-time
+            content:
+              type: string
+              description: >
+                The actual dataset content (sequence data).
+
+                Only included when `include_content=true` query parameter is
+                used.
+
+                For FASTA files, this will be the raw FASTA format text.
+              example: |-
+                >seq1
+                ATGCATGCATGCATGC
+                >seq2
+                ATGCATGCATGCATGT
     Datasets:
       type: object
       properties:
