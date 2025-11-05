@@ -29,6 +29,8 @@ tags:
     description: Examples uploading files to Datamonkey
   - name: Jobs
     description: Manage analysis jobs
+  - name: Visualizations
+    description: Manage data visualizations (Vega-Lite specs)
   - name: Methods
     description: List and manage available HyPhy methods
   - name: FEL
@@ -90,6 +92,10 @@ paths:
     $ref: paths/datasets.yaml
   '/datasets/{datasetId}':
     $ref: paths/datasets/{datasetId}.yaml
+  /visualizations:
+    $ref: paths/visualizations.yaml
+  '/visualizations/{vizId}':
+    $ref: paths/visualizations/{vizId}.yaml
   /methods:
     $ref: paths/methods.yaml
   /methods/fel-start:

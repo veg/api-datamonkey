@@ -1,0 +1,6 @@
+type: object
+properties:
+  visualizations:
+    type: array
+    items:
+      $ref: ./Visualization.yaml

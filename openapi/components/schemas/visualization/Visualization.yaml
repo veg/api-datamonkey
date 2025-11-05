@@ -1,0 +1,62 @@
+type: object
+properties:
+  viz_id:
+    type: string
+    description: Unique identifier for the visualization
+    example: viz_1730764800_123
+  job_id:
+    type: string
+    description: Job ID associated with this visualization
+    example: 550e8400-e29b-41d4-a716-446655440000
+  dataset_id:
+    type: string
+    description: Dataset ID associated with this visualization (optional)
+    example: 550e8400-e29b-41d4-a716-446655440001
+  title:
+    type: string
+    description: Title of the visualization
+    example: Selection Pressure Across Sites
+  description:
+    type: string
+    description: Description of what the visualization shows
+    example: Bar chart showing dN/dS ratios for each codon position
+  spec:
+    type: object
+    description: The Vega-Lite visualization specification
+    additionalProperties: true
+  config:
+    type: object
+    description: Additional configuration options
+    additionalProperties: true
+  metadata:
+    type: object
+    description: Additional metadata about the visualization
+    properties:
+      library:
+        type: string
+        description: Visualization library used
+        example: vega-lite
+      generated_by:
+        type: string
+        description: Tool or method that generated this visualization
+        example: makeVegaSpec
+      prompt:
+        type: string
+        description: Original prompt used to generate the visualization
+        example: Create a bar chart showing selection pressure
+    additionalProperties: true
+  created_at:
+    type: string
+    format: date-time
+    description: Timestamp when the visualization was created
+    example: '2024-11-04T19:00:00Z'
+  updated_at:
+    type: string
+    format: date-time
+    description: Timestamp when the visualization was last updated
+    example: '2024-11-04T19:30:00Z'
+required:
+  - viz_id
+  - job_id
+  - title
+  - spec
