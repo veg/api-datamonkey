@@ -1,0 +1,94 @@
+parameters:
+  - name: pretty_print
+    in: query
+    description: Pretty print response
+    schema:
+      type: boolean
+get:
+  tags:
+    - Visualizations
+  summary: Get a list of visualizations for the authenticated user
+  description: Returns visualizations owned by the authenticated user. Can be filtered by job ID or dataset ID.
+  operationId: getVisualizationsList
+  parameters:
+    - name: user_token
+      in: header
+      required: true
+      description: Token identifying the user
+      schema:
+        type: string
+    - name: job_id
+      in: query
+      required: false
+      description: Filter visualizations by job ID
+      schema:
+        type: string
+    - name: dataset_id
+      in: query
+      required: false
+      description: Filter visualizations by dataset ID
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Success - returns user's visualizations
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/visualization/Visualizations.yaml
+    '401':
+      description: Unauthorized - Invalid or missing user token
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/UnauthorizedError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ServerError.yaml
+post:
+  tags:
+    - Visualizations
+  summary: Create a new visualization
+  description: Create and store a new Vega-Lite visualization specification
+  operationId: createVisualization
+  parameters:
+    - name: user_token
+      in: header
+      required: true
+      description: Token identifying the user
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/visualization/CreateVisualizationRequest.yaml
+    required: true
+  responses:
+    '201':
+      description: Visualization created successfully
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/visualization/Visualization.yaml
+    '400':
+      description: Bad Request - Invalid visualization data
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/InvalidDataError.yaml
+    '401':
+      description: Unauthorized - Invalid or missing user token
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/UnauthorizedError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ServerError.yaml

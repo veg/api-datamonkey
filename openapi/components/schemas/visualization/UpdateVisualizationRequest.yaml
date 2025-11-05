@@ -1,0 +1,22 @@
+type: object
+properties:
+  title:
+    type: string
+    description: Updated title of the visualization
+    example: Updated Selection Pressure Chart
+  description:
+    type: string
+    description: Updated description
+    example: Updated bar chart showing dN/dS ratios
+  spec:
+    type: object
+    description: Updated Vega-Lite visualization specification
+    additionalProperties: true
+  config:
+    type: object
+    description: Updated configuration options
+    additionalProperties: true
+  metadata:
+    type: object
+    description: Updated metadata
+    additionalProperties: true

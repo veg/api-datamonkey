@@ -1,0 +1,146 @@
+parameters:
+  - name: vizId
+    in: path
+    description: ID of the visualization to retrieve
+    required: true
+    schema:
+      $ref: ../../components/schemas/Hash.yaml
+  - name: pretty_print
+    in: query
+    description: Pretty print response
+    schema:
+      type: boolean
+get:
+  tags:
+    - Visualizations
+  summary: Get details for a specific visualization
+  description: Retrieve a specific visualization by its ID
+  operationId: getVisualization
+  parameters:
+    - name: user_token
+      in: header
+      required: false
+      description: Token identifying the user. Required for private visualizations, optional for public ones.
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/visualization/Visualization.yaml
+    '401':
+      description: Unauthorized - Invalid or missing user token for private visualization
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/UnauthorizedError.yaml
+    '404':
+      description: Visualization not found
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/NotFoundError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/ServerError.yaml
+put:
+  tags:
+    - Visualizations
+  summary: Update a visualization
+  description: Update an existing visualization's metadata or spec
+  operationId: updateVisualization
+  parameters:
+    - name: user_token
+      in: header
+      required: true
+      description: Token identifying the user who owns the visualization
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../../components/schemas/visualization/UpdateVisualizationRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: Visualization updated successfully
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/visualization/Visualization.yaml
+    '400':
+      description: Bad Request - Invalid update data
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/InvalidDataError.yaml
+    '401':
+      description: Unauthorized - Invalid or missing user token
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/UnauthorizedError.yaml
+    '403':
+      description: Forbidden - User does not own this visualization
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/ForbiddenError.yaml
+    '404':
+      description: Visualization not found
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/NotFoundError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/ServerError.yaml
+delete:
+  tags:
+    - Visualizations
+  summary: Delete a visualization
+  description: Delete a visualization from the Datamonkey server
+  operationId: deleteVisualization
+  parameters:
+    - name: user_token
+      in: header
+      required: true
+      description: Token identifying the user who owns the visualization
+      schema:
+        type: string
+  responses:
+    '204':
+      description: Visualization deleted successfully
+    '401':
+      description: Unauthorized - Invalid or missing user token
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/UnauthorizedError.yaml
+    '403':
+      description: Forbidden - User does not own this visualization
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/ForbiddenError.yaml
+    '404':
+      description: Visualization not found
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/NotFoundError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/ServerError.yaml
